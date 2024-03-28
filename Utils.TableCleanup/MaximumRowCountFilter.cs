@@ -17,7 +17,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup
 
             if (deletionAmount < 0)
             {
-                throw new ArgumentException("The provided value cannot be negative.", "maxDeletion");
+                throw new ArgumentException("The provided value cannot be negative.", "deletionAmount");
             }
 
             MaxRowCount = maxRows;
@@ -48,7 +48,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup
 
             if (isRemovalRequired)
             {
-                // If a user enters MaxDeletion value that is bigger than the actual amount of data, an error would occur.
+                // If a user enters deletionAmount value that is bigger than the actual amount of data, an error would occur.
                 int threshold = DeletionAmount > size ? size : DeletionAmount;
 
                 RemovedPrimaryKeys = new ReadOnlyCollection<string>(availableRows.Take(threshold).Select(r => r.PrimaryKey).ToList());

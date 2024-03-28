@@ -49,8 +49,6 @@ namespace Skyline.DataMiner.Utils.TableCleanup
 
         public CleanupData Execute(CleanupData input)
         {
-            int size = input.Rows.Count();
-
             List<string> removedKeys = new List<string>();
             List<CleanupRow> filtered = new List<CleanupRow>();
 
