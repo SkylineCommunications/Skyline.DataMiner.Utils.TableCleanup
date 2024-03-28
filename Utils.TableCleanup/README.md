@@ -4,6 +4,8 @@
 
 The class library helps to manage cleanup of tables based on the age or count of rows in the table.
 
+The nuget package uses the builder design pattern that requires adding of the filter parameters before building the TableCleanup and TableCleanupData.
+
 ### About DataMiner
 
 DataMiner is a transformational platform that provides vendor-independent control and monitoring of devices and services. Out of the box and by design, it addresses key challenges such as security, complexity, multi-cloud, and much more. It has a pronounced open architecture and powerful capabilities enabling users to evolve easily and continuously.
