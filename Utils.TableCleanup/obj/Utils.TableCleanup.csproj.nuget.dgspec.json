@@ -1,0 +1,67 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\JoshuaWO\\source\\repos\\Table Cleanup\\Utils.TableCleanup\\Utils.TableCleanup.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\JoshuaWO\\source\\repos\\Table Cleanup\\Utils.TableCleanup\\Utils.TableCleanup.csproj": {
+      "version": "1.0.1",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\JoshuaWO\\source\\repos\\Table Cleanup\\Utils.TableCleanup\\Utils.TableCleanup.csproj",
+        "projectName": "Skyline.DataMiner.Utils.TableCleanup",
+        "projectPath": "C:\\Users\\JoshuaWO\\source\\repos\\Table Cleanup\\Utils.TableCleanup\\Utils.TableCleanup.csproj",
+        "packagesPath": "C:\\Users\\JoshuaWO\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\JoshuaWO\\source\\repos\\Table Cleanup\\Utils.TableCleanup\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\JoshuaWO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "http://devcore3:81/nuget": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "targetAlias": "netstandard2.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "targetAlias": "netstandard2.0",
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

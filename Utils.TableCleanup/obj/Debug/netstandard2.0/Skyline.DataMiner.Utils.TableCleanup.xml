@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Skyline.DataMiner.Utils.TableCleanup</name>
+    </assembly>
+    <members>
+        <member name="M:Skyline.DataMiner.Utils.TableCleanup.MaximumRowCountFilter.Execute(Skyline.DataMiner.Utils.TableCleanup.CleanupData)">
+            <summary>
+            The rows will be handled in the way they are passed toward the class.
+            </summary>
+            <returns>Cleanup Data.</returns>
+            <param name="input">The cleanup info input.</param>
+        </member>
+    </members>
+</doc>
