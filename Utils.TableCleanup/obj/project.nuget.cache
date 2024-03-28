@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EeNYRSnCLgNCSxV8xZgDlA2F3nkLLxCdcZOOGLaPQ/E+5izqIVqxqPD5CZNwUX/a71sZqW9Scez6uu4sU6hTfw==",
+  "dgSpecHash": "E9omVeoXDXd46FI389ocTTLN2tqhAhxkWNeRjb6fiCWBiLGkJJCupQLlEGl0+sKCUFFeybMMSAxZrDQ7+t3L3A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\JoshuaWO\\source\\repos\\Table Cleanup\\Utils.TableCleanup\\Utils.TableCleanup.csproj",
+  "projectFilePath": "C:\\Users\\JoshuaWO\\source\\repos\\Skyline.Dataminer.Utils.TableCleanup\\Utils.TableCleanup\\Utils.TableCleanup.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\JoshuaWO\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\JoshuaWO\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"

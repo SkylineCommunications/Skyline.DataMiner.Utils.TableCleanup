@@ -74,7 +74,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup
                 switch (this.instance.cleanupMethod)
                 {
                     case CleanupMethod.NA:
-                        // No cleaup has to be done.
+                        // No cleanup has to be done.
                         break;
 
                     case CleanupMethod.Combo:

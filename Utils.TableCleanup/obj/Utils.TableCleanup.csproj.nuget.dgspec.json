@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\JoshuaWO\\source\\repos\\Table Cleanup\\Utils.TableCleanup\\Utils.TableCleanup.csproj": {}
+    "C:\\Users\\JoshuaWO\\source\\repos\\Skyline.Dataminer.Utils.TableCleanup\\Utils.TableCleanup\\Utils.TableCleanup.csproj": {}
   },
   "projects": {
-    "C:\\Users\\JoshuaWO\\source\\repos\\Table Cleanup\\Utils.TableCleanup\\Utils.TableCleanup.csproj": {
+    "C:\\Users\\JoshuaWO\\source\\repos\\Skyline.Dataminer.Utils.TableCleanup\\Utils.TableCleanup\\Utils.TableCleanup.csproj": {
       "version": "1.0.1",
       "restore": {
-        "projectUniqueName": "C:\\Users\\JoshuaWO\\source\\repos\\Table Cleanup\\Utils.TableCleanup\\Utils.TableCleanup.csproj",
+        "projectUniqueName": "C:\\Users\\JoshuaWO\\source\\repos\\Skyline.Dataminer.Utils.TableCleanup\\Utils.TableCleanup\\Utils.TableCleanup.csproj",
         "projectName": "Skyline.DataMiner.Utils.TableCleanup",
-        "projectPath": "C:\\Users\\JoshuaWO\\source\\repos\\Table Cleanup\\Utils.TableCleanup\\Utils.TableCleanup.csproj",
+        "projectPath": "C:\\Users\\JoshuaWO\\source\\repos\\Skyline.Dataminer.Utils.TableCleanup\\Utils.TableCleanup\\Utils.TableCleanup.csproj",
         "packagesPath": "C:\\Users\\JoshuaWO\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\JoshuaWO\\source\\repos\\Table Cleanup\\Utils.TableCleanup\\obj\\",
+        "outputPath": "C:\\Users\\JoshuaWO\\Source\\Repos\\Skyline.Dataminer.Utils.TableCleanup\\Utils.TableCleanup\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\JoshuaWO\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -22,6 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Users\\JoshuaWO\\Downloads\\NugetPackages": {},
           "http://devcore3:81/nuget": {},
           "https://api.nuget.org/v3/index.json": {}
         },

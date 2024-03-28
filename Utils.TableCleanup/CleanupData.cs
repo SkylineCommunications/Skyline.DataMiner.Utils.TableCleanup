@@ -64,21 +64,21 @@ namespace Skyline.DataMiner.Utils.TableCleanup
                 return this;
             }
 
-            public TrapCleanupDataBuilder WithOleTimestamps(IEnumerable<double> timestamps)
+            public TrapCleanupDataBuilder WithOleTimestamps(IEnumerable<double?> timestamps)
             {
-                this.timestamps = timestamps.Select(r => DateTime.FromOADate(r)).ToArray();
+                this.timestamps = timestamps.Select(r => r.HasValue ? DateTime.FromOADate(r.Value) : DateTime.MinValue).ToArray();
                 return this;
             }
 
-            public TrapCleanupDataBuilder WithTimestamps(IEnumerable<DateTime> timestamps)
+            public TrapCleanupDataBuilder WithDateTimeTimestamps(IEnumerable<DateTime?> timestamps)
             {
-                this.timestamps = timestamps.ToArray();
+                this.timestamps = timestamps.Select(r => r.HasValue ? r.Value : DateTime.MinValue).ToArray();
                 return this;
             }
 
-            public TrapCleanupDataBuilder WithTimestamps(IEnumerable<string> timestamps)
+            public TrapCleanupDataBuilder WithStringTimestamps(IEnumerable<string> timestamps)
             {
-                this.timestamps = timestamps.Select(r => DateTime.Parse(r)).ToArray();
+                this.timestamps = timestamps.Select(r => DateTime.TryParse(r, out var parsedDate) ? parsedDate : DateTime.MinValue).ToArray();
                 return this;
             }
 
