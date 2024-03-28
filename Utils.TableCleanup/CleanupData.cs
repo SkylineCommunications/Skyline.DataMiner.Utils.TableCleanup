@@ -61,9 +61,9 @@ namespace Skyline.DataMiner.Utils.TableCleanup
                 return new CleanupData(rows);
             }
 
-            public TrapCleanupDataBuilder RegisterTablePids(SLProtocol protocol, uint tablePid, uint indexColumnPid, uint timeColumnPid, IEnumerable<string> keys)
+            public TrapCleanupDataBuilder RegisterTablePids(SLProtocol protocol, uint tablePid, uint indexColumnIdx, uint timeColumnIdx)
             {
-                object trapTablePids = new uint[] { indexColumnPid, timeColumnPid };
+                object trapTablePids = new uint[] { indexColumnIdx, timeColumnIdx };
                 object[] trapColumns = (object[])protocol.NotifyProtocol((int)SLNetMessages.NotifyType.NT_GET_TABLE_COLUMNS, tablePid, trapTablePids);
                 string[] trapKeys = Array.ConvertAll((object[])trapColumns[0], Convert.ToString);
                 double[] trapTimes = Array.ConvertAll((object[])trapColumns[1], Convert.ToDouble);
