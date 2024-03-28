@@ -25,4 +25,8 @@
 		<None Include="LICENSE.txt" Pack="true" PackagePath="" />
 		<None Include="nuget\Icon.png" Pack="true" PackagePath="" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Skyline.DataMiner.Dev.Protocol" Version="10.4.4.2" />
+	</ItemGroup>
 </Project>

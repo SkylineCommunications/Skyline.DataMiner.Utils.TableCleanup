@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using System;
 using System.Linq;
+using Skyline.DataMiner.Scripting;
+using SLNetMessages = Skyline.DataMiner.Net.Messages;
+using static Skyline.DataMiner.Utils.TableCleanup.Table;
 
 namespace Skyline.DataMiner.Utils.TableCleanup
 {
@@ -58,9 +61,15 @@ namespace Skyline.DataMiner.Utils.TableCleanup
                 return new CleanupData(rows);
             }
 
-            public TrapCleanupDataBuilder WithKeys(IEnumerable<string> keys)
+            public TrapCleanupDataBuilder RegisterTablePids(SLProtocol protocol, uint tablePid, uint indexColumnPid, uint timeColumnPid, IEnumerable<string> keys)
             {
-                this.keys = keys.ToArray();
+                object trapTablePids = new uint[] { indexColumnPid, timeColumnPid };
+                object[] trapColumns = (object[])protocol.NotifyProtocol((int)SLNetMessages.NotifyType.NT_GET_TABLE_COLUMNS, tablePid, trapTablePids);
+                string[] trapKeys = Array.ConvertAll((object[])trapColumns[0], Convert.ToString);
+                double[] trapTimes = Array.ConvertAll((object[])trapColumns[1], Convert.ToDouble);
+                this.keys = trapKeys.ToArray();
+                this.timestamps = trapTimes.Select(r => DateTime.FromOADate(r)).ToArray();
+
                 return this;
             }
 

@@ -11,7 +11,7 @@
         "projectName": "Skyline.DataMiner.Utils.TableCleanup",
         "projectPath": "C:\\Users\\JoshuaWO\\source\\repos\\Skyline.Dataminer.Utils.TableCleanup\\Utils.TableCleanup\\Utils.TableCleanup.csproj",
         "packagesPath": "C:\\Users\\JoshuaWO\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\JoshuaWO\\Source\\Repos\\Skyline.Dataminer.Utils.TableCleanup\\Utils.TableCleanup\\obj\\",
+        "outputPath": "C:\\Users\\JoshuaWO\\source\\repos\\Skyline.Dataminer.Utils.TableCleanup\\Utils.TableCleanup\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\JoshuaWO\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -47,6 +47,10 @@
               "target": "Package",
               "version": "[2.0.3, )",
               "autoReferenced": true
+            },
+            "Skyline.DataMiner.Dev.Protocol": {
+              "target": "Package",
+              "version": "[10.4.4.2, )"
             }
           },
           "imports": [

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Skyline.DataMiner.Scripting;
 
 namespace Skyline.DataMiner.Utils.TableCleanup
 {
