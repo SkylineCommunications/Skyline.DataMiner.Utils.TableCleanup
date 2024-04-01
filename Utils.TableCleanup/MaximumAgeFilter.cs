@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace Skyline.DataMiner.Utils.TableCleanup
-{    
-     /// <summary>
-     /// The maximum age of the rows allowed on the table that implements the IFilter interface.
-     /// </summary>
+{
+    /// <summary>
+    /// The maximum age of the rows allowed on the table that implements the IFilter interface.
+    /// </summary>
     public class MaximumAgeFilter : IFilter<CleanupData>
     {
         /// <summary>

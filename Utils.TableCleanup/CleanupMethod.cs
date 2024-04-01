@@ -1,7 +1,7 @@
 ﻿namespace Skyline.DataMiner.Utils.TableCleanup
 {
     /// <summary>
-    /// The CleanupMethod enum must strictly follow the following forma: -1 = NA, 0 = Combo, 1 = TrapAge, 2 = RowCount. 
+    /// The CleanupMethod enum must strictly follow the following forma: -1 = NA, 0 = Combo, 1 = TrapAge, 2 = RowCount.
     /// </summary>
     public enum CleanupMethod
     {
