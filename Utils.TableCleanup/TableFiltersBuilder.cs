@@ -11,7 +11,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup
     public class TableFilters
     {
         /// <summary>
-        /// These Filters are to be used on the TableData class and can be either of CleanupMethod NA, Combo, TrapAge or RowCount.
+        /// These Filters are to be used on the TableData class and can be either of CleanupMethod NA, Combo, RowAge or RowCount.
         /// </summary>
         protected readonly List<IFilter<CleanupData>> Filters = new List<IFilter<CleanupData>>();
 
@@ -51,7 +51,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup
         }
 
         /// <summary>
-        /// The builder class of the TableFilters. The cleanup method to be added needs to be a discreet in the form of: -1 = NA, 1 = Combo, 2 = TrapAge, 3 = RowCount.
+        /// The builder class of the TableFilters. The cleanup method to be added needs to be a discreet in the form of: -1 = NA, 1 = Combo, 2 = RowAge, 3 = RowCount.
         /// </summary>
         public class TableFiltersBuilder
         {
@@ -61,10 +61,10 @@ namespace Skyline.DataMiner.Utils.TableCleanup
             /// Builds the TableFilters based on the given parameter IDs for the cleanup method, max alarm count, deletion amount and max alarm age and then validates it.
             /// </summary>
             /// <param name="protocol">The SLProtocol process to execute the clean up based on parameter IDs on.</param>
-            /// <param name="cleanupMethodPid">The parameter ID for the cleanup method. The method must be an enum of the form, -1 = NA, 1 = Combo, 2 = TrapAge, 3 = RowCount.</param>
+            /// <param name="cleanupMethodPid">The parameter ID for the cleanup method. The method must be an enum of the form, -1 = NA, 1 = Combo, 2 = RowAge, 3 = RowCount.</param>
             /// <param name="maxAlarmCountPid">The parameter ID for the max alarm count. The count must be a positive number that determines the maximum number of rows allowed in the table.</param>
             /// <param name="deletionAmountPid">The parameter ID for the deletion amount. The deletion amount determines how many rows are deleted from the table when it reaches its max capacity</param>
-            /// <param name="maxAlarmAgePid">The parameter ID for the max alarm age. This time is the duration allowed of the oldest trap in the table in seconds.</param>
+            /// <param name="maxAlarmAgePid">The parameter ID for the max alarm age. This time is the duration allowed of the oldest row in the table in seconds.</param>
             /// <returns>A built TableFilters class that can be used together with CleanupData to filter on that data.</returns>
             public TableFilters Build(SLProtocol protocol, int cleanupMethodPid, int maxAlarmCountPid, int deletionAmountPid, int maxAlarmAgePid)
             {
@@ -91,7 +91,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup
                         instance.Filters.Add(new MaximumAgeFilter(maxAlarmAge));
                         break;
 
-                    case CleanupMethod.TrapAge:
+                    case CleanupMethod.RowAge:
                         instance.Filters.Add(new MaximumAgeFilter(maxAlarmAge));
                         break;
 

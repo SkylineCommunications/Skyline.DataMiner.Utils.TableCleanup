@@ -24,7 +24,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup
         public IEnumerable<string> Keys { get; private set; }
 
         /// <summary>
-        /// The timestamps of the rows that need to be referenced when filtering by the age of the trap rows.
+        /// The timestamps of the rows that need to be referenced when filtering by the age of the rows.
         /// </summary>
         public IEnumerable<DateTime?> Timestamps { get; private set; }
 
@@ -36,15 +36,15 @@ namespace Skyline.DataMiner.Utils.TableCleanup
         /// The builder constructor that builds the table with the data that is filtered.
         /// </summary>
         /// <returns></returns>
-        public static TrapCleanupDataBuilder Builder()
+        public static TableCleanupDataBuilder Builder()
         {
-            return new TrapCleanupDataBuilder();
+            return new TableCleanupDataBuilder();
         }
 
         /// <summary>
         /// The builder class for the filtered tables data that needs to initialize with the timestamps of the data before they can be filtered.
         /// </summary>
-        public class TrapCleanupDataBuilder
+        public class TableCleanupDataBuilder
         {
             private string[] keys;
             private DateTime[] timestamps;
@@ -59,23 +59,23 @@ namespace Skyline.DataMiner.Utils.TableCleanup
             /// <returns>A CleanupData class that contains data that has yet to be filtered.</returns>
             public CleanupData Build(SLProtocol protocol, int tablePid, int indexColumnIdx, int timeColumnIdx)
             {
-                object trapTablePids = new int[] { indexColumnIdx, timeColumnIdx };
-                object[] trapColumns = (object[])protocol.NotifyProtocol((int)SLNetMessages.NotifyType.NT_GET_TABLE_COLUMNS, tablePid, trapTablePids);
-                string[] trapKeys = Array.ConvertAll((object[])trapColumns[0], Convert.ToString);
-                double[] trapTimes = Array.ConvertAll((object[])trapColumns[1], Convert.ToDouble);
-                this.keys = trapKeys.ToArray();
-                this.timestamps = trapTimes.Select(r => DateTime.FromOADate(r)).ToArray();
+                object indexAndTimeColumnIdx = new int[] { indexColumnIdx, timeColumnIdx };
+                object[] indexAndTimeColumns = (object[])protocol.NotifyProtocol((int)SLNetMessages.NotifyType.NT_GET_TABLE_COLUMNS, tablePid, indexAndTimeColumnIdx);
+                string[] keys = Array.ConvertAll((object[])indexAndTimeColumns[0], Convert.ToString);
+                double[] rowAge = Array.ConvertAll((object[])indexAndTimeColumns[1], Convert.ToDouble);
+                this.keys = keys.ToArray();
+                this.timestamps = rowAge.Select(r => DateTime.FromOADate(r)).ToArray();
                 Validate();
 
-                List<CleanupRow> rows = new List<CleanupRow>(keys.Length);
+                List<CleanupRow> rows = new List<CleanupRow>(this.keys.Length);
 
-                for (int i = 0; i < keys.Length; i++)
+                for (int i = 0; i < this.keys.Length; i++)
                 {
                     if (timestamps != null)
                     {
                         rows.Add(new CleanupRow()
                         {
-                            PrimaryKey = keys[i],
+                            PrimaryKey = this.keys[i],
                             Timestamp = timestamps[i]
                         });
                     }
@@ -83,7 +83,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup
                     {
                         rows.Add(new CleanupRow()
                         {
-                            PrimaryKey = keys[i],
+                            PrimaryKey = this.keys[i],
                             Timestamp = null
                         });
                     }
