@@ -32,9 +32,8 @@ namespace Skyline.DataMiner.Utils.TableCleanup
         /// This will clean the table based on the filters provided on the provided tablePid in the protocol.
         /// </summary>
         /// <param name="protocol">The SLProtocol process that is running the delete function</param>
-        /// <param name="tablePid">The trap table which is being cleaned</param>
         /// <param name="input">Takes in CleanupData that will be filtered by the Filters initialized by the Builder class</param>
-        public void DeleteFilteredTable(SLProtocol protocol, int tablePid, CleanupData input)
+        public void DeleteFilteredTable(SLProtocol protocol, CleanupData input)
         {
             HashSet<string> keysToDelete = new HashSet<string>();
 
@@ -48,7 +47,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup
                 }
             }
 
-            protocol.DeleteRow(tablePid, keysToDelete.ToArray());
+            protocol.DeleteRow(input.TablePid, keysToDelete.ToArray());
         }
 
         /// <summary>

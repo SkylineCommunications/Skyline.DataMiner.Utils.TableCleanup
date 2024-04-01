@@ -30,6 +30,8 @@ namespace Skyline.DataMiner.Utils.TableCleanup
 
         internal IEnumerable<CleanupRow> Rows { get; private set; }
 
+        internal int TablePid { get; private set; }
+
         /// <summary>
         /// The builder constructor that builds the table with the data that is filtered.
         /// </summary>
@@ -55,9 +57,9 @@ namespace Skyline.DataMiner.Utils.TableCleanup
             /// <param name="indexColumnIdx">The Index column index position in the table being cleaned.</param>
             /// <param name="timeColumnIdx">The Time column index position in the table being cleaned.</param>
             /// <returns>A CleanupData class that contains data that has yet to be filtered.</returns>
-            public CleanupData Build(SLProtocol protocol, uint tablePid, uint indexColumnIdx, uint timeColumnIdx)
+            public CleanupData Build(SLProtocol protocol, int tablePid, int indexColumnIdx, int timeColumnIdx)
             {
-                object trapTablePids = new uint[] { indexColumnIdx, timeColumnIdx };
+                object trapTablePids = new int[] { indexColumnIdx, timeColumnIdx };
                 object[] trapColumns = (object[])protocol.NotifyProtocol((int)SLNetMessages.NotifyType.NT_GET_TABLE_COLUMNS, tablePid, trapTablePids);
                 string[] trapKeys = Array.ConvertAll((object[])trapColumns[0], Convert.ToString);
                 double[] trapTimes = Array.ConvertAll((object[])trapColumns[1], Convert.ToDouble);
@@ -86,8 +88,9 @@ namespace Skyline.DataMiner.Utils.TableCleanup
                         });
                     }
                 }
-
-                return new CleanupData(rows);
+                CleanupData cleanupData = new CleanupData(rows);
+                cleanupData.TablePid = tablePid;
+                return cleanupData;
             }
 
             private void Validate()
