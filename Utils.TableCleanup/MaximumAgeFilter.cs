@@ -1,13 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 
 namespace Skyline.DataMiner.Utils.TableCleanup
-{   
+{    
+     /// <summary>
+     /// The maximum age of the rows allowed on the table that implements the IFilter interface.
+     /// </summary>
     public class MaximumAgeFilter : IFilter<CleanupData>
     {
+        /// <summary>
+        /// The maximum age allowed by the filter that cleans all rows with timestamps older than the given seconds provided.
+        /// </summary>
+        /// <param name="seconds">The threshold age allowed of the oldest traps given in seconds.</param>
+        /// <exception cref="ArgumentException">An exception thrown if the threshold time is invalid.</exception>
         public MaximumAgeFilter(int seconds)
         {
             if (seconds <= 0)
@@ -18,35 +24,18 @@ namespace Skyline.DataMiner.Utils.TableCleanup
             MinimumAllowed = DateTime.Now.AddSeconds(-1 * seconds);
         }
 
+        /// <summary>
+        /// The primary keys deleted and taken out of the table after filtering.
+        /// </summary>
         public ReadOnlyCollection<string> RemovedPrimaryKeys { get; private set; }
 
         private DateTime MinimumAllowed { get; set; }
 
-        public static MaximumAgeFilter FromDays(int days)
-        {
-            return new MaximumAgeFilter((int)TimeSpan.FromDays(days).TotalSeconds);
-        }
-
-        public static MaximumAgeFilter FromHours(int hours)
-        {
-            return new MaximumAgeFilter((int)TimeSpan.FromHours(hours).TotalSeconds);
-        }
-
-        public static MaximumAgeFilter FromMinutes(int minutes)
-        {
-            return new MaximumAgeFilter((int)TimeSpan.FromMinutes(minutes).TotalSeconds);
-        }
-
-        public static MaximumAgeFilter FromSeconds(int seconds)
-        {
-            return new MaximumAgeFilter(seconds);
-        }
-
-        public static MaximumAgeFilter FromTimespan(TimeSpan time)
-        {
-            return new MaximumAgeFilter((int)time.TotalSeconds);
-        }
-
+        /// <summary>
+        /// This method will filter the given input data by the max age filter.
+        /// </summary>
+        /// <returns>The data after it has been cleaned and filtered.returns>
+        /// <param name="input">The cleanup info input.</param>
         public CleanupData Execute(CleanupData input)
         {
             List<string> removedKeys = new List<string>();

@@ -2,12 +2,20 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 
 namespace Skyline.DataMiner.Utils.TableCleanup
 {
+    /// <summary>
+    /// The maximum row count allowed on the table that implements the IFilter interface.
+    /// </summary>
     public class MaximumRowCountFilter : IFilter<CleanupData>
     {
+        /// <summary>
+        /// The constructor class for the MaximumRowCountFilter.
+        /// </summary>
+        /// <param name="maxRows">The max rows that should be allowed for the table.</param>
+        /// <param name="deletionAmount">The number of rows to be deleted when the table reaches its max capacity.</param>
+        /// <exception cref="ArgumentException">Exception thrown if the given parameters are invalid.</exception>
         public MaximumRowCountFilter(int maxRows, int deletionAmount)
         {
             if (maxRows < 0)
@@ -28,16 +36,25 @@ namespace Skyline.DataMiner.Utils.TableCleanup
         {
         }
 
+        /// <summary>
+        /// The parameter setting the number of rows to be deleted when the table reaches its max capacity.
+        /// </summary>
         public int DeletionAmount { get; private set; }
 
+        /// <summary>
+        /// The parameter setting the max rows that should be allowed for the table.
+        /// </summary>
         public int MaxRowCount { get; private set; }
 
+        /// <summary>
+        /// The parameter with the collection of primary keys of the rows that are removed from the table.
+        /// </summary>
         public ReadOnlyCollection<string> RemovedPrimaryKeys { get; private set; }
 
         /// <summary>
-        /// The rows will be handled in the way they are passed toward the class.
+        /// This method will filter the given input data by the max count filter.
         /// </summary>
-        /// <returns>Cleanup Data.</returns>
+        /// <returns>The data after it has been cleaned and filtered.returns>
         /// <param name="input">The cleanup info input.</param>
         public CleanupData Execute(CleanupData input)
         {
