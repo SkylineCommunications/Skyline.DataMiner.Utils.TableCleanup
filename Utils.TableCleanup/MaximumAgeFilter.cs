@@ -7,12 +7,13 @@ namespace Skyline.DataMiner.Utils.TableCleanup
     /// <summary>
     /// The maximum age of the rows allowed on the table that implements the IFilter interface.
     /// </summary>
-    public class MaximumAgeFilter : IFilter<CleanupData>
+    public class MaximumAgeFilter : IFilter<TableCleanupData>
     {
         /// <summary>
         /// The maximum age allowed by the filter that cleans all rows with timestamps older than the given seconds provided.
         /// </summary>
         /// <param name="seconds">The threshold age allowed of the oldest rows given in seconds.</param>
+        /// <param name="deletionAmount">The amount of rows that have to be deleted.</param>
         /// <exception cref="ArgumentException">An exception thrown if the threshold time is invalid.</exception>
         public MaximumAgeFilter(int seconds, int deletionAmount)
         {
@@ -27,11 +28,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup
             }
 
             DeletionAmount = deletionAmount;
-            MinimumAllowed = DateTime.Now.AddSeconds(-1 * seconds);
-        }
-
-        private MaximumAgeFilter()
-        {            
+            MinimumAllowed = DateTime.Now.AddSeconds(-1 * seconds - DeletionAmount);
         }
 
         /// <summary>
@@ -51,7 +48,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup
         /// </summary>
         /// <returns>The data after it has been cleaned and filtered.returns>
         /// <param name="input">The cleanup info input.</param>
-        public CleanupData Execute(CleanupData input)
+        public TableCleanupData Execute(TableCleanupData input)
         {
             List<string> removedKeys = new List<string>();
             List<CleanupRow> filtered = new List<CleanupRow>();
@@ -80,7 +77,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup
                 }
 
                 RemovedPrimaryKeys = new ReadOnlyCollection<string>(removedKeys);
-                return new CleanupData(filtered);
+                return new TableCleanupData(filtered);
             }
             else
             {

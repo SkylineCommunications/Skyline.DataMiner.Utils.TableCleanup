@@ -8,7 +8,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup
     /// <summary>
     /// The maximum row count allowed on the table that implements the IFilter interface.
     /// </summary>
-    public class MaximumRowCountFilter : IFilter<CleanupData>
+    public class MaximumRowCountFilter : IFilter<TableCleanupData>
     {
         /// <summary>
         /// The constructor class for the MaximumRowCountFilter.
@@ -32,10 +32,6 @@ namespace Skyline.DataMiner.Utils.TableCleanup
             DeletionAmount = deletionAmount;
         }
 
-        private MaximumRowCountFilter()
-        {
-        }
-
         /// <summary>
         /// The parameter setting the number of rows to be deleted when the table reaches its max capacity.
         /// </summary>
@@ -56,7 +52,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup
         /// </summary>
         /// <returns>The data after it has been cleaned and filtered.returns>
         /// <param name="input">The cleanup info input.</param>
-        public CleanupData Execute(CleanupData input)
+        public TableCleanupData Execute(TableCleanupData input)
         {
             List<CleanupRow> availableRows = new List<CleanupRow>(input.Rows);
 
@@ -71,7 +67,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup
                 RemovedPrimaryKeys = new ReadOnlyCollection<string>(availableRows.Take(threshold).Select(r => r.PrimaryKey).ToList());
                 availableRows.RemoveRange(0, threshold);
 
-                return new CleanupData(availableRows);
+                return new TableCleanupData(availableRows);
             }
             else
             {

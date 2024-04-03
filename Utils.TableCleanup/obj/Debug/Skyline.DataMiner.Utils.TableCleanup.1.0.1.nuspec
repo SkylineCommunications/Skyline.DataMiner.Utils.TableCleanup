@@ -12,10 +12,10 @@
     <projectUrl>https://skyline.be/</projectUrl>
     <description>The class library helps to manage cleanup of tables based on the age or count of rows in the table.</description>
     <tags>Skyline DataMiner</tags>
-    <repository type="git" commit="256f05898bdff160982fb6787a6e945f14a2e6f4" />
+    <repository type="git" commit="c8d8c8ef6377a3fa1b7fc1585f4efa176816c297" />
     <dependencies>
       <group targetFramework=".NETStandard2.0">
-        <dependency id="Skyline.DataMiner.Dev.Protocol" version="10.4.4.2" exclude="Build,Analyzers" />
+        <dependency id="Skyline.DataMiner.Dev.Protocol" version="10.2.0.25" exclude="Build,Analyzers" />
       </group>
     </dependencies>
   </metadata>
