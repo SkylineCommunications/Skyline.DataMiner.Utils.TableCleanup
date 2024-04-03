@@ -9,7 +9,8 @@
     ".NETStandard,Version=v2.0/": {
       "Skyline.DataMiner.Utils.TableCleanup/1.0.1": {
         "dependencies": {
-          "NETStandard.Library": "2.0.3"
+          "NETStandard.Library": "2.0.3",
+          "Skyline.DataMiner.Dev.Protocol": "10.4.4.2"
         },
         "runtime": {
           "Skyline.DataMiner.Utils.TableCleanup.dll": {}
@@ -19,6 +20,114 @@
       "NETStandard.Library/2.0.3": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0"
+        }
+      },
+      "Newtonsoft.Json/13.0.2": {
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "13.0.0.0",
+            "fileVersion": "13.0.2.27524"
+          }
+        }
+      },
+      "SharpZipLib/1.3.3": {
+        "runtime": {
+          "lib/netstandard2.0/ICSharpCode.SharpZipLib.dll": {
+            "assemblyVersion": "1.3.3.11",
+            "fileVersion": "1.3.3.11"
+          }
+        }
+      },
+      "Skyline.DataMiner.Dev.Common/10.4.4.2": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.2",
+          "SharpZipLib": "1.3.3",
+          "Skyline.DataMiner.Files.DataMinerMessageBroker.API": "10.4.4.2",
+          "Skyline.DataMiner.Files.SLLoggerUtil": "10.4.4.2",
+          "Skyline.DataMiner.Files.SLNetTypes": "10.4.4.2",
+          "Skyline.DataMiner.Files.SLProtoBufLibrary": "10.4.4.2",
+          "Skyline.DataMiner.Files.Skyline.DataMiner.Storage.Types": "10.4.4.2",
+          "Skyline.DataMiner.Files.protobufnet": "10.4.4.2"
+        }
+      },
+      "Skyline.DataMiner.Dev.Protocol/10.4.4.2": {
+        "dependencies": {
+          "Skyline.DataMiner.Dev.Common": "10.4.4.2",
+          "Skyline.DataMiner.Files.Interop.SLDms": "10.4.4.2",
+          "Skyline.DataMiner.Files.QActionHelperBaseClasses": "10.4.4.2",
+          "Skyline.DataMiner.Files.SLManagedScripting": "10.4.4.2"
+        }
+      },
+      "Skyline.DataMiner.Files.DataMinerMessageBroker.API/10.4.4.2": {
+        "runtime": {
+          "lib/net462/DataMinerMessageBroker.API.dll": {
+            "assemblyVersion": "2.4.4.18163",
+            "fileVersion": "2.4.4.18163"
+          }
+        }
+      },
+      "Skyline.DataMiner.Files.Interop.SLDms/10.4.4.2": {
+        "runtime": {
+          "lib/net462/Interop.SLDms.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Skyline.DataMiner.Files.protobufnet/10.4.4.2": {
+        "runtime": {
+          "lib/net462/protobuf-net.dll": {
+            "assemblyVersion": "2.4.8.0",
+            "fileVersion": "2.4.8.0"
+          }
+        }
+      },
+      "Skyline.DataMiner.Files.QActionHelperBaseClasses/10.4.4.2": {
+        "runtime": {
+          "lib/net462/QActionHelperBaseClasses.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "10.4.2401.1314"
+          }
+        }
+      },
+      "Skyline.DataMiner.Files.Skyline.DataMiner.Storage.Types/10.4.4.2": {
+        "runtime": {
+          "lib/net462/Skyline.DataMiner.Storage.Types.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "10.4.2409.2644"
+          }
+        }
+      },
+      "Skyline.DataMiner.Files.SLLoggerUtil/10.4.4.2": {
+        "runtime": {
+          "lib/net462/SLLoggerUtil.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "10.3.2341.1536"
+          }
+        }
+      },
+      "Skyline.DataMiner.Files.SLManagedScripting/10.4.4.2": {
+        "runtime": {
+          "lib/net462/SLManagedScripting.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "10.4.2409.470"
+          }
+        }
+      },
+      "Skyline.DataMiner.Files.SLNetTypes/10.4.4.2": {
+        "runtime": {
+          "lib/net462/SLNetTypes.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "10.4.2409.2644"
+          }
+        }
+      },
+      "Skyline.DataMiner.Files.SLProtoBufLibrary/10.4.4.2": {
+        "runtime": {
+          "lib/net462/SLProtoBufLibrary.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "10.3.2329.1764"
+          }
         }
       }
     }
@@ -42,6 +151,97 @@
       "sha512": "sha512-st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
       "path": "netstandard.library/2.0.3",
       "hashPath": "netstandard.library.2.0.3.nupkg.sha512"
+    },
+    "Newtonsoft.Json/13.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-R2pZ3B0UjeyHShm9vG+Tu0EBb2lC8b0dFzV9gVn50ofHXh9Smjk6kTn7A/FdAsC8B5cKib1OnGYOXxRBz5XQDg==",
+      "path": "newtonsoft.json/13.0.2",
+      "hashPath": "newtonsoft.json.13.0.2.nupkg.sha512"
+    },
+    "SharpZipLib/1.3.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-N8+hwhsKZm25tDJfWpBSW7EGhH/R7EMuiX+KJ4C4u+fCWVc1lJ5zg1u3S1RPPVYgTqhx/C3hxrqUpi6RwK5+Tg==",
+      "path": "sharpziplib/1.3.3",
+      "hashPath": "sharpziplib.1.3.3.nupkg.sha512"
+    },
+    "Skyline.DataMiner.Dev.Common/10.4.4.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-57GJydy7/5M5fHEO30xBB5zS7RvhTq+IATzone8FHeNWUCjmLlRdkJchSVU9VPfoPhy2q9qqSIjo81Wkt4ZfMQ==",
+      "path": "skyline.dataminer.dev.common/10.4.4.2",
+      "hashPath": "skyline.dataminer.dev.common.10.4.4.2.nupkg.sha512"
+    },
+    "Skyline.DataMiner.Dev.Protocol/10.4.4.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-N0fDUULxikKhYXBgYQsM9E0TTR2QR6Yn1y7VVTYrzpES5cqztmAylzmLOh7l3r8JOKdNgaAFPGVzDUecNcWJbQ==",
+      "path": "skyline.dataminer.dev.protocol/10.4.4.2",
+      "hashPath": "skyline.dataminer.dev.protocol.10.4.4.2.nupkg.sha512"
+    },
+    "Skyline.DataMiner.Files.DataMinerMessageBroker.API/10.4.4.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-sNCBWRj+aF3bCACrpQEasuLOx2U+KmQWUC6bDXOy0UIs3jclZ99K5E9id9UzNYgO3pXIIT0CIwZsUS2pvfwsOg==",
+      "path": "skyline.dataminer.files.dataminermessagebroker.api/10.4.4.2",
+      "hashPath": "skyline.dataminer.files.dataminermessagebroker.api.10.4.4.2.nupkg.sha512"
+    },
+    "Skyline.DataMiner.Files.Interop.SLDms/10.4.4.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-EDrQ2VHQpTvqICyYElkJax5NfE8dZTF2V0K0JuSrJrCs2cRybbhb9V1dL3uE/uSR+GndfLfDWR2Sb5XA+5vZAw==",
+      "path": "skyline.dataminer.files.interop.sldms/10.4.4.2",
+      "hashPath": "skyline.dataminer.files.interop.sldms.10.4.4.2.nupkg.sha512"
+    },
+    "Skyline.DataMiner.Files.protobufnet/10.4.4.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-bJde2juKEqtqv6wqudbym/nU2dRj1jiWDJs7njBnbu+hcYv1byiqEQxITHT9LoFExU0gjT8i4+bIFZkpPefz8g==",
+      "path": "skyline.dataminer.files.protobufnet/10.4.4.2",
+      "hashPath": "skyline.dataminer.files.protobufnet.10.4.4.2.nupkg.sha512"
+    },
+    "Skyline.DataMiner.Files.QActionHelperBaseClasses/10.4.4.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-E89lR17ZEheQDNyRuMRI/jYw/Iw2JubUzkk3evIs9YQSJxuEyo/RvQF8MMjNrnr4ToDaJ+SO6rPY3cMFBziUWw==",
+      "path": "skyline.dataminer.files.qactionhelperbaseclasses/10.4.4.2",
+      "hashPath": "skyline.dataminer.files.qactionhelperbaseclasses.10.4.4.2.nupkg.sha512"
+    },
+    "Skyline.DataMiner.Files.Skyline.DataMiner.Storage.Types/10.4.4.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-NMlu9bd4Zg/DwVJcML8mgL8pZiQJ/h0+loZi1RNmQfASRqCxsdMRO1zuvjDAIgMm0wKU83kTp0mu+ukDAP/D0w==",
+      "path": "skyline.dataminer.files.skyline.dataminer.storage.types/10.4.4.2",
+      "hashPath": "skyline.dataminer.files.skyline.dataminer.storage.types.10.4.4.2.nupkg.sha512"
+    },
+    "Skyline.DataMiner.Files.SLLoggerUtil/10.4.4.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ltEj84v1tRw/8q5BxyJJGVOPEK3A55YLax3dIpcWeYHjXzkBan+26fNElrPSxnXoRjaGXaSg0DkxpJcwhVglQg==",
+      "path": "skyline.dataminer.files.slloggerutil/10.4.4.2",
+      "hashPath": "skyline.dataminer.files.slloggerutil.10.4.4.2.nupkg.sha512"
+    },
+    "Skyline.DataMiner.Files.SLManagedScripting/10.4.4.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-IStuOjTVFZps7wp2s9v8tJKujjD5ZQo1cdOaL+ZRgG0xssLXN1n6OcAbPgBuQeK1AS9u1fptIJNOMQfjQxcHjQ==",
+      "path": "skyline.dataminer.files.slmanagedscripting/10.4.4.2",
+      "hashPath": "skyline.dataminer.files.slmanagedscripting.10.4.4.2.nupkg.sha512"
+    },
+    "Skyline.DataMiner.Files.SLNetTypes/10.4.4.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-j+j8DpeE7o7E14CmxLcqEZYIWekQdnExoubk4dGSZLMBOI2iQy5hnzNo45ipbIsN/NtqBmlJIoxU+j/89P1FHw==",
+      "path": "skyline.dataminer.files.slnettypes/10.4.4.2",
+      "hashPath": "skyline.dataminer.files.slnettypes.10.4.4.2.nupkg.sha512"
+    },
+    "Skyline.DataMiner.Files.SLProtoBufLibrary/10.4.4.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-zDvcdDp+iEZjOPhZm/Xw/qYWAXU+QFMwua9YVgLtF/OKpTZhymXUfJI2COSt/FBNMeyb2PWX1fmZkiVW1TJDHg==",
+      "path": "skyline.dataminer.files.slprotobuflibrary/10.4.4.2",
+      "hashPath": "skyline.dataminer.files.slprotobuflibrary.10.4.4.2.nupkg.sha512"
     }
   }
 }

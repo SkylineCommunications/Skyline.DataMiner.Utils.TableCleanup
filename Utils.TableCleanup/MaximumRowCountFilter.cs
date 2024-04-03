@@ -39,12 +39,12 @@ namespace Skyline.DataMiner.Utils.TableCleanup
         /// <summary>
         /// The parameter setting the number of rows to be deleted when the table reaches its max capacity.
         /// </summary>
-        public int DeletionAmount { get; private set; }
+        private int DeletionAmount { get; set; }
 
         /// <summary>
         /// The parameter setting the max rows that should be allowed for the table.
         /// </summary>
-        public int MaxRowCount { get; private set; }
+        private int MaxRowCount { get; set; }
 
         /// <summary>
         /// The parameter with the collection of primary keys of the rows that are removed from the table.

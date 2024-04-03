@@ -6,23 +6,23 @@
     public enum CleanupMethod
     {
         /// <summary>
-        /// NA cleanup method means no cleanup method is being used. This is not recommended.
+        /// Combo cleanup method uses both row age and row count to filter and clean the table.
         /// </summary>
-        NA = -1,
+        RowAgeOrRowCount = 0,
 
         /// <summary>
         /// Combo cleanup method uses both row age and row count to filter and clean the table.
         /// </summary>
-        Combo = 0,
+        RowAgeAndRowCount = 1,
 
         /// <summary>
         /// RowAge cleanup method will filter and clean rows based on how old they are.
         /// </summary>
-        RowAge = 1,
+        RowAge = 2,
 
         /// <summary>
         /// RowCount cleanup method will filter and clean the oldest rows once the table reaches a threshold capacity.
         /// </summary>
-        RowCount = 2
+        RowCount = 3
     }
 }

@@ -14,20 +14,35 @@ namespace Skyline.DataMiner.Utils.TableCleanup
         /// </summary>
         /// <param name="seconds">The threshold age allowed of the oldest rows given in seconds.</param>
         /// <exception cref="ArgumentException">An exception thrown if the threshold time is invalid.</exception>
-        public MaximumAgeFilter(int seconds)
+        public MaximumAgeFilter(int seconds, int deletionAmount)
         {
             if (seconds <= 0)
             {
                 throw new ArgumentException("Value cannot be smaller or equal to zero.", "seconds");
             }
 
+            if (deletionAmount < 0)
+            {
+                throw new ArgumentException("The provided value cannot be negative.", "deletionAmount");
+            }
+
+            DeletionAmount = deletionAmount;
             MinimumAllowed = DateTime.Now.AddSeconds(-1 * seconds);
+        }
+
+        private MaximumAgeFilter()
+        {            
         }
 
         /// <summary>
         /// The primary keys deleted and taken out of the table after filtering.
         /// </summary>
         public ReadOnlyCollection<string> RemovedPrimaryKeys { get; private set; }
+
+        /// <summary>
+        /// The parameter setting the number of rows to be deleted when the table reaches its max capacity.
+        /// </summary>
+        private int DeletionAmount { get; set; }
 
         private DateTime MinimumAllowed { get; set; }
 
