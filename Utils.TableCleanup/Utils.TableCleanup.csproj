@@ -27,6 +27,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="Skyline.DataMiner.Dev.Protocol" Version="10.2.0.25" />
+	  <PackageReference Include="Skyline.DataMiner.Dev.Protocol" Version="10.2.0.6" />
 	</ItemGroup>
 </Project>

@@ -38,11 +38,6 @@ namespace Skyline.DataMiner.Utils.TableCleanup
             int deletionAmountMaxAlarmAge = Convert.ToInt32(60); // 60 seconds
             switch (_cleanupMethod)
             {
-                case CleanupMethod.RowAgeOrRowCount:
-                    Filters.Add(new MaximumRowCountFilter(maxAlarmCount, deletionAmountMaxAlarmCount));
-                    Filters.Add(new MaximumAgeFilter(maxAlarmAge, deletionAmountMaxAlarmAge));
-                    break;
-
                 case CleanupMethod.RowAgeAndRowCount:
                     Filters.Add(new MaximumRowCountFilter(maxAlarmCount, deletionAmountMaxAlarmCount));
                     Filters.Add(new MaximumAgeFilter(maxAlarmAge, deletionAmountMaxAlarmAge));
@@ -76,16 +71,9 @@ namespace Skyline.DataMiner.Utils.TableCleanup
             {
                 input = filter.Execute(input);
 
-                if (_cleanupMethod == CleanupMethod.RowAgeAndRowCount)
+                if (filter.RemovedPrimaryKeys != null)
                 {
-                    keysToDelete.
-                }
-                else
-                {
-                    if (filter.RemovedPrimaryKeys != null)
-                    {
-                        keysToDelete.UnionWith(filter.RemovedPrimaryKeys);
-                    }
+                    keysToDelete.UnionWith(filter.RemovedPrimaryKeys);
                 }
             }
 

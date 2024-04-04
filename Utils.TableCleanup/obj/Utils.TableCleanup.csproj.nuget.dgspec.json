@@ -57,7 +57,7 @@
             },
             "Skyline.DataMiner.Dev.Protocol": {
               "target": "Package",
-              "version": "[10.2.0.25, )"
+              "version": "[10.2.0.6, )"
             }
           },
           "imports": [

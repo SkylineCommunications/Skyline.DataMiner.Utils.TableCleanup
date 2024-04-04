@@ -9,11 +9,6 @@
             The CleanupMethod enum must strictly follow the following format: 0 = RowAgeOrRowCount, 1 = RowAgeAndRowCount, 1 = RowAge, 2 = RowCount.
             </summary>
         </member>
-        <member name="F:Skyline.DataMiner.Utils.TableCleanup.CleanupMethod.RowAgeOrRowCount">
-            <summary>
-            Combo cleanup method uses both row age and row count to filter and clean the table.
-            </summary>
-        </member>
         <member name="F:Skyline.DataMiner.Utils.TableCleanup.CleanupMethod.RowAgeAndRowCount">
             <summary>
             Combo cleanup method uses both row age and row count to filter and clean the table.
@@ -127,6 +122,15 @@
             <param name="protocol">This is SLProtocol which is used to manipulate table data.</param>
             <param name="tablePid">This is the table that will be manipulated.</param>
         </member>
+        <member name="M:Skyline.DataMiner.Utils.TableCleanup.TableCleanupData.#ctor(Skyline.DataMiner.Scripting.SLProtocol,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            This constructor should be used if you want to cleanup on row age, row count and/or row age.
+            </summary>
+            <param name="protocol"></param>
+            <param name="tablePid"></param>
+            <param name="indexColumnIdx"></param>
+            <param name="timeColumnIdx"></param>
+        </member>
         <member name="P:Skyline.DataMiner.Utils.TableCleanup.TableCleanupData.Keys">
             <summary>
             The keys of the rows that are remaining in the table after being filtered.
@@ -146,6 +150,15 @@
             <summary>
             These Filters are to be used on the TableData class and can be either of CleanupMethod NA, Combo, RowAge or RowCount.
             </summary>
+        </member>
+        <member name="M:Skyline.DataMiner.Utils.TableCleanup.TableFilters.#ctor(Skyline.DataMiner.Scripting.SLProtocol,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            This is to register the cleanup parameters.
+            </summary>
+            <param name="protocol">SLPRotocol is used for manipulating the table.</param>
+            <param name="cleanupMethodPid">This is the cleanup methods that will be used.</param>
+            <param name="maxAlarmCountPid">This is the parameter ID for the maximum amount of rows in the table.</param>
+            <param name="maxAlarmAgePid">This is the parameter ID for the maximum age of rows in the table. This parameter should be configured in seconds.</param>
         </member>
         <member name="M:Skyline.DataMiner.Utils.TableCleanup.TableFilters.DeleteFilteredTable(Skyline.DataMiner.Scripting.SLProtocol,Skyline.DataMiner.Utils.TableCleanup.TableCleanupData)">
             <summary>

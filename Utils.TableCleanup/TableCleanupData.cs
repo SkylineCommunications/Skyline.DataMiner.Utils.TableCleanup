@@ -48,7 +48,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup
         public TableCleanupData(SLProtocol protocol, int tablePid, int indexColumnIdx, int timeColumnIdx)
         {
             TablePid = tablePid;
-            object indexAndTimeColumnIdx = new int[] { indexColumnIdx, timeColumnIdx };
+            object indexAndTimeColumnIdx = new uint[] { Convert.ToUInt32(indexColumnIdx), Convert.ToUInt32(timeColumnIdx) };
             object[] indexAndTimeColumns = (object[])protocol.NotifyProtocol((int)SLNetMessages.NotifyType.NT_GET_TABLE_COLUMNS, tablePid, indexAndTimeColumnIdx);
             string[] keys = Array.ConvertAll((object[])indexAndTimeColumns[0], Convert.ToString);
             double?[] rowAge = Array.ConvertAll((object[])indexAndTimeColumns[1], x => ConvertObjectToNullableDouble(x));

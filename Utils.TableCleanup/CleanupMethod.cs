@@ -8,21 +8,16 @@
         /// <summary>
         /// Combo cleanup method uses both row age and row count to filter and clean the table.
         /// </summary>
-        RowAgeOrRowCount = 0,
-
-        /// <summary>
-        /// Combo cleanup method uses both row age and row count to filter and clean the table.
-        /// </summary>
-        RowAgeAndRowCount = 1,
+        RowAgeAndRowCount = 0,
 
         /// <summary>
         /// RowAge cleanup method will filter and clean rows based on how old they are.
         /// </summary>
-        RowAge = 2,
+        RowAge = 1,
 
         /// <summary>
         /// RowCount cleanup method will filter and clean the oldest rows once the table reaches a threshold capacity.
         /// </summary>
-        RowCount = 3
+        RowCount = 2
     }
 }
