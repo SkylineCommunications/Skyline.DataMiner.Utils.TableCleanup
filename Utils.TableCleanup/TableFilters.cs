@@ -41,7 +41,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup
             _cleanupMethod = (CleanupMethod)Convert.ToInt32(tableCleanupValues[0]);
             int maxAlarmCount = Convert.ToInt32(tableCleanupValues[1]);
             int maxAlarmAge = Convert.ToInt32(tableCleanupValues[2]);
-            int deletionAmountMaxAlarmCount = Convert.ToInt32(maxAlarmCount / 100 * 20); // Remove 20% of the data
+            int deletionAmountMaxAlarmCount = Convert.ToInt32((double)maxAlarmCount / 100 * 20); // Remove 20% of the data
             int deletionAmountMaxAlarmAge = Convert.ToInt32(60); // 60 seconds
             switch (_cleanupMethod)
             {
@@ -78,6 +78,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup
             foreach (IFilter<TableCleanupData> filter in this.Filters)
             {
                 input = filter.Execute(input);
+                filter.
                 NumberOfDeletedRows = filter.RemovedPrimaryKeys.Count();
 
                 if (filter.RemovedPrimaryKeys != null)
