@@ -62,7 +62,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup
             Validate();
         }
 
-        private CleanupMethod _cleanupMethod { get; set; }
+        public CleanupMethod _cleanupMethod { get; set; }
 
         private SLProtocol _protocol { get; set; }
 
