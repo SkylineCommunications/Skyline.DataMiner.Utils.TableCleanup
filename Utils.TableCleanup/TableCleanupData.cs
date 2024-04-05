@@ -27,6 +27,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup
         /// <param name="timeColumnIdx"></param>
         public TableCleanupData(SLProtocol protocol, int tablePid, int indexColumnIdx, int? timeColumnIdx)
         {
+            Rows = new List<CleanupRow>();
             TablePid = tablePid;
             if (timeColumnIdx == null)
             {
