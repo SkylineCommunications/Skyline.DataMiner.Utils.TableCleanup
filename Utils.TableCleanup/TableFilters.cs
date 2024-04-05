@@ -78,7 +78,6 @@ namespace Skyline.DataMiner.Utils.TableCleanup
             foreach (IFilter<TableCleanupData> filter in this.Filters)
             {
                 input = filter.Execute(input);
-                filter.
                 NumberOfDeletedRows = filter.RemovedPrimaryKeys.Count();
 
                 if (filter.RemovedPrimaryKeys != null)
