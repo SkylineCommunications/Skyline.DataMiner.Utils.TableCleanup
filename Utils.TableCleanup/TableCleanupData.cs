@@ -11,12 +11,12 @@ namespace Skyline.DataMiner.Utils.TableCleanup
     /// </summary>
     public class TableCleanupData
     {
-        internal TableCleanupData(List<CleanupRow> rows)
+        /*internal TableCleanupData(List<CleanupRow> rows)
         {
             Rows = rows;
             Keys = rows.Select(r => r.PrimaryKey).ToList();
             Timestamps = rows.Select(r => r.Timestamp).ToList();
-        }
+        }*/
 
         /// <summary>
         /// This constructor should be used if you want to cleanup on all the options.
@@ -100,7 +100,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup
 
         internal List<DateTime?> Timestamps { get; set; }
 
-        internal List<CleanupRow> Rows { get; private set; }
+        public List<CleanupRow> Rows { get; private set; }
 
         internal int TablePid { get; private set; }
 
