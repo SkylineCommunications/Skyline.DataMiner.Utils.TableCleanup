@@ -25,11 +25,11 @@ namespace Skyline.DataMiner.Utils.TableCleanup
         public TableFilters(SLProtocol protocol, int cleanupMethodPid, int maxAlarmCountPid, int maxAlarmAgePid)
         {
             _protocol = protocol;
-            object tableCleanupValuesPids = new int[]
+            uint[] tableCleanupValuesPids = new uint[]
                 {
-                    cleanupMethodPid,
-                    maxAlarmCountPid,
-                    maxAlarmAgePid,
+                    Convert.ToUInt32(cleanupMethodPid),
+                    Convert.ToUInt32(maxAlarmCountPid),
+                    Convert.ToUInt32(maxAlarmAgePid),
                 };
             object[] tableCleanupValues = (object[])protocol.GetParameters(tableCleanupValuesPids);
             _cleanupMethod = (CleanupMethod)Convert.ToInt32(tableCleanupValues[0]);
