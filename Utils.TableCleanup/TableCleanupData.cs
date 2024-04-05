@@ -50,7 +50,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup
                 double?[] rowAge = Array.ConvertAll((object[])indexAndTimeColumns[1], x => ConvertObjectToNullableDouble(x));
                 //Keys = keys.ToList();
                 Timestamps = rowAge.Select(r => ConvertNullableDoubleToNullableDateTime(r)).ToList();
-                Validate();
+                Validate(keys);
                 /*for (int i = 0; i < Keys.Count; i++)
                 {
                     if (Timestamps != null)
@@ -126,9 +126,9 @@ namespace Skyline.DataMiner.Utils.TableCleanup
             }
         }
 
-        private void Validate()
+        private void Validate(object[] keys)
         {
-            if (Keys == null)
+            if (keys == null)
             {
                 throw new InvalidOperationException("No primary keys were provided.");
             }
