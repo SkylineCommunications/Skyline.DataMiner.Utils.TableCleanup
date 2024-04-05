@@ -24,6 +24,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup
         /// <param name="maxAlarmAgePid">This is the parameter ID for the maximum age of rows in the table. This parameter should be configured in seconds.</param>
         public TableFilters(SLProtocol protocol, int cleanupMethodPid, int maxAlarmCountPid, int maxAlarmAgePid)
         {
+            _protocol = protocol;
             object tableCleanupValuesPids = new int[]
                 {
                     cleanupMethodPid,
@@ -52,18 +53,18 @@ namespace Skyline.DataMiner.Utils.TableCleanup
                     break;
             }
 
-            // Check if the constructed object does not contain any issues.
             Validate();
         }
 
         private CleanupMethod _cleanupMethod { get; set; }
 
+        private SLProtocol _protocol { get; set; }
+
         /// <summary>
         /// This will clean the table based on the filters provided on the provided tablePid in the protocol.
         /// </summary>
-        /// <param name="protocol">The SLProtocol process that is running the delete function</param>
         /// <param name="input">Takes in CleanupData that will be filtered by the Filters initialized by the Builder class</param>
-        public void DeleteFilteredTable(SLProtocol protocol, TableCleanupData input)
+        public void DeleteFilteredTable(TableCleanupData input)
         {
             HashSet<string> keysToDelete = new HashSet<string>();
 
@@ -77,7 +78,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup
                 }
             }
 
-            protocol.DeleteRow(input.TablePid, keysToDelete.ToArray());
+            _protocol.DeleteRow(input.TablePid, keysToDelete.ToArray());
         }
 
         private void Validate()

@@ -23,7 +23,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup
         /// </summary>
         /// <param name="protocol">This is SLProtocol which is used to manipulate table data.</param>
         /// <param name="tablePid">This is the table that will be manipulated.</param>
-        public TableCleanupData(SLProtocol protocol, int tablePid)
+        /*public TableCleanupData(SLProtocol protocol, int tablePid)
         {
             TablePid = tablePid;
             Keys = protocol.GetKeys(tablePid).ToList();
@@ -36,42 +36,78 @@ namespace Skyline.DataMiner.Utils.TableCleanup
                     Timestamp = null
                 });
             }
-        }
+        }*/
 
         /// <summary>
-        /// This constructor should be used if you want to cleanup on row age, row count and/or row age.
+        /// This constructor should be used if you want to cleanup on all the options.
         /// </summary>
         /// <param name="protocol"></param>
         /// <param name="tablePid"></param>
         /// <param name="indexColumnIdx"></param>
         /// <param name="timeColumnIdx"></param>
-        public TableCleanupData(SLProtocol protocol, int tablePid, int indexColumnIdx, int timeColumnIdx)
+        public TableCleanupData(SLProtocol protocol, int tablePid, int indexColumnIdx, int? timeColumnIdx)
         {
             TablePid = tablePid;
-            object indexAndTimeColumnIdx = new uint[] { Convert.ToUInt32(indexColumnIdx), Convert.ToUInt32(timeColumnIdx) };
-            object[] indexAndTimeColumns = (object[])protocol.NotifyProtocol((int)SLNetMessages.NotifyType.NT_GET_TABLE_COLUMNS, tablePid, indexAndTimeColumnIdx);
-            string[] keys = Array.ConvertAll((object[])indexAndTimeColumns[0], Convert.ToString);
-            double?[] rowAge = Array.ConvertAll((object[])indexAndTimeColumns[1], x => ConvertObjectToNullableDouble(x));
-            Keys = keys.ToList();
-            Timestamps = rowAge.Select(r => ConvertNullableDoubleToNullableDateTime(r)).ToList();
-            Validate();
-            for (int i = 0; i < Keys.Count; i++)
+            if (timeColumnIdx == null)
             {
-                if (Timestamps != null)
+                string[] keys = protocol.GetKeys(tablePid);
+                ValidateKeys();
+                for (int i = 0; i < keys.Length; i++)
                 {
                     Rows.Add(new CleanupRow()
                     {
-                        PrimaryKey = Keys[i],
-                        Timestamp = Timestamps[i]
-                    });
-                }
-                else
-                {
-                    Rows.Add(new CleanupRow()
-                    {
-                        PrimaryKey = Keys[i],
+                        PrimaryKey = Convert.ToString(keys[i]),
                         Timestamp = null
                     });
+                }
+            }
+            else
+            {
+                object indexAndTimeColumnIdx = new uint[] { Convert.ToUInt32(indexColumnIdx), Convert.ToUInt32(timeColumnIdx) };
+                object[] indexAndTimeColumns = (object[])protocol.NotifyProtocol((int)SLNetMessages.NotifyType.NT_GET_TABLE_COLUMNS, tablePid, indexAndTimeColumnIdx);
+                object[] keys = (object[])indexAndTimeColumns[0];
+                //string[] keys = Array.ConvertAll((object[])indexAndTimeColumns[0], Convert.ToString);
+                double?[] rowAge = Array.ConvertAll((object[])indexAndTimeColumns[1], x => ConvertObjectToNullableDouble(x));
+                //Keys = keys.ToList();
+                Timestamps = rowAge.Select(r => ConvertNullableDoubleToNullableDateTime(r)).ToList();
+                Validate();
+                /*for (int i = 0; i < Keys.Count; i++)
+                {
+                    if (Timestamps != null)
+                    {
+                        Rows.Add(new CleanupRow()
+                        {
+                            PrimaryKey = Keys[i],
+                            Timestamp = Timestamps[i]
+                        });
+                    }
+                    else
+                    {
+                        Rows.Add(new CleanupRow()
+                        {
+                            PrimaryKey = Keys[i],
+                            Timestamp = null
+                        });
+                    }
+                }*/
+                for (int i = 0; i < keys.Length; i++)
+                {
+                    if (Timestamps != null)
+                    {
+                        Rows.Add(new CleanupRow()
+                        {
+                            PrimaryKey = Convert.ToString(keys[i]),
+                            Timestamp = Timestamps[i]
+                        });
+                    }
+                    else
+                    {
+                        Rows.Add(new CleanupRow()
+                        {
+                            PrimaryKey = Convert.ToString(keys[i]),
+                            Timestamp = null
+                        });
+                    }
                 }
             }
         }
@@ -79,12 +115,12 @@ namespace Skyline.DataMiner.Utils.TableCleanup
         /// <summary>
         /// The keys of the rows that are remaining in the table after being filtered.
         /// </summary>
-        public List<string> Keys { get; private set; }
+        internal List<string> Keys { get; set; }
 
         /// <summary>
         /// The timestamps of the rows that need to be referenced when filtering by the age of the rows.
         /// </summary>
-        public List<DateTime?> Timestamps { get; private set; }
+        internal List<DateTime?> Timestamps { get; set; }
 
         internal List<CleanupRow> Rows { get; private set; }
 

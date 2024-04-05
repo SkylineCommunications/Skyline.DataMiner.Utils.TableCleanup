@@ -16,10 +16,10 @@ C:\GitHub\Nugets\Skyline.DataMiner.Utils.TableCleanup\Utils.TableCleanup\obj\Deb
 C:\GitHub\Nugets\Skyline.DataMiner.Utils.TableCleanup\Utils.TableCleanup\obj\Debug\netstandard2.0\Utils.TableCleanup.AssemblyInfo.cs
 C:\GitHub\Nugets\Skyline.DataMiner.Utils.TableCleanup\Utils.TableCleanup\obj\Debug\netstandard2.0\Utils.TableCleanup.csproj.CoreCompileInputs.cache
 C:\GitHub\Nugets\Skyline.DataMiner.Utils.TableCleanup\Utils.TableCleanup\obj\Debug\netstandard2.0\Utils.TableCleanup.sourcelink.json
-C:\GitHub\Nugets\Skyline.DataMiner.Utils.TableCleanup\Utils.TableCleanup\obj\Debug\netstandard2.0\Skyline.DataMiner.Utils.TableCleanup.dll
-C:\GitHub\Nugets\Skyline.DataMiner.Utils.TableCleanup\Utils.TableCleanup\obj\Debug\netstandard2.0\Skyline.DataMiner.Utils.TableCleanup.xml
-C:\GitHub\Nugets\Skyline.DataMiner.Utils.TableCleanup\Utils.TableCleanup\obj\Debug\netstandard2.0\Skyline.DataMiner.Utils.TableCleanup.pdb
 C:\GitHub\Nugets\Skyline.DataMiner.Utils.TableCleanup\Utils.TableCleanup\bin\Debug\netstandard2.0\Skyline.DataMiner.Utils.TableCleanup.deps.json
 C:\GitHub\Nugets\Skyline.DataMiner.Utils.TableCleanup\Utils.TableCleanup\bin\Debug\netstandard2.0\Skyline.DataMiner.Utils.TableCleanup.dll
 C:\GitHub\Nugets\Skyline.DataMiner.Utils.TableCleanup\Utils.TableCleanup\bin\Debug\netstandard2.0\Skyline.DataMiner.Utils.TableCleanup.pdb
 C:\GitHub\Nugets\Skyline.DataMiner.Utils.TableCleanup\Utils.TableCleanup\bin\Debug\netstandard2.0\Skyline.DataMiner.Utils.TableCleanup.xml
+C:\GitHub\Nugets\Skyline.DataMiner.Utils.TableCleanup\Utils.TableCleanup\obj\Debug\netstandard2.0\Skyline.DataMiner.Utils.TableCleanup.dll
+C:\GitHub\Nugets\Skyline.DataMiner.Utils.TableCleanup\Utils.TableCleanup\obj\Debug\netstandard2.0\Skyline.DataMiner.Utils.TableCleanup.xml
+C:\GitHub\Nugets\Skyline.DataMiner.Utils.TableCleanup\Utils.TableCleanup\obj\Debug\netstandard2.0\Skyline.DataMiner.Utils.TableCleanup.pdb
