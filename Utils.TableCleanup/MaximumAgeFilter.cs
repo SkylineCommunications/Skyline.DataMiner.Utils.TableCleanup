@@ -77,7 +77,8 @@ namespace Skyline.DataMiner.Utils.TableCleanup
                 }
 
                 RemovedPrimaryKeys = new ReadOnlyCollection<string>(removedKeys);
-                return new TableCleanupData(filtered);
+                //return new TableCleanupData(filtered);
+                return input;
             }
             else
             {

@@ -19,26 +19,6 @@ namespace Skyline.DataMiner.Utils.TableCleanup
         }
 
         /// <summary>
-        /// This constructor can be used if you only want to cleanup on row count.
-        /// </summary>
-        /// <param name="protocol">This is SLProtocol which is used to manipulate table data.</param>
-        /// <param name="tablePid">This is the table that will be manipulated.</param>
-        /*public TableCleanupData(SLProtocol protocol, int tablePid)
-        {
-            TablePid = tablePid;
-            Keys = protocol.GetKeys(tablePid).ToList();
-            ValidateKeys();
-            for (int i = 0; i < Keys.Count; i++)
-            {
-                Rows.Add(new CleanupRow()
-                {
-                    PrimaryKey = Keys[i],
-                    Timestamp = null
-                });
-            }
-        }*/
-
-        /// <summary>
         /// This constructor should be used if you want to cleanup on all the options.
         /// </summary>
         /// <param name="protocol"></param>
@@ -112,14 +92,8 @@ namespace Skyline.DataMiner.Utils.TableCleanup
             }
         }
 
-        /// <summary>
-        /// The keys of the rows that are remaining in the table after being filtered.
-        /// </summary>
         internal List<string> Keys { get; set; }
 
-        /// <summary>
-        /// The timestamps of the rows that need to be referenced when filtering by the age of the rows.
-        /// </summary>
         internal List<DateTime?> Timestamps { get; set; }
 
         internal List<CleanupRow> Rows { get; private set; }
