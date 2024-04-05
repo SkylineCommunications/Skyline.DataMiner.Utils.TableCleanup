@@ -46,11 +46,12 @@ namespace Skyline.DataMiner.Utils.TableCleanup
                 object indexAndTimeColumnIdx = new uint[] { Convert.ToUInt32(indexColumnIdx), Convert.ToUInt32(timeColumnIdx) };
                 object[] indexAndTimeColumns = (object[])protocol.NotifyProtocol((int)SLNetMessages.NotifyType.NT_GET_TABLE_COLUMNS, tablePid, indexAndTimeColumnIdx);
                 object[] keys = (object[])indexAndTimeColumns[0];
+                object[] datetime = (object[])indexAndTimeColumns[1];
                 //string[] keys = Array.ConvertAll((object[])indexAndTimeColumns[0], Convert.ToString);
                 double?[] rowAge = Array.ConvertAll((object[])indexAndTimeColumns[1], x => ConvertObjectToNullableDouble(x));
                 //Keys = keys.ToList();
-                Timestamps = rowAge.Select(r => ConvertNullableDoubleToNullableDateTime(r)).ToList();
-                Validate(keys);
+                //Timestamps = rowAge.Select(r => ConvertNullableDoubleToNullableDateTime(r)).ToList();
+                Validate(keys, datetime);
                 /*for (int i = 0; i < Keys.Count; i++)
                 {
                     if (Timestamps != null)
@@ -72,22 +73,24 @@ namespace Skyline.DataMiner.Utils.TableCleanup
                 }*/
                 for (int i = 0; i < keys.Length; i++)
                 {
-                    if (Timestamps != null)
-                    {
-                        Rows.Add(new CleanupRow()
-                        {
-                            PrimaryKey = Convert.ToString(keys[i]),
-                            Timestamp = Timestamps[i]
-                        });
-                    }
+                    CleanupRow row = new CleanupRow();
+                    /*if (Timestamps != null)
+                    {*/
+                        row.PrimaryKey = Convert.ToString(keys[i]);
+                        row.Timestamp = DateTime.FromOADate(Convert.ToDouble(datetime[i]));
+                    /*}
                     else
                     {
-                        Rows.Add(new CleanupRow()
+                        row.PrimaryKey = Convert.ToString(keys[i]);
+                        row.Timestamp = null;*/
+                        /*Rows.Add(new CleanupRow()
                         {
                             PrimaryKey = Convert.ToString(keys[i]),
                             Timestamp = null
-                        });
-                    }
+                        });*/
+                    //}
+
+                    Rows.Add(row);
                 }
             }
         }
@@ -126,14 +129,14 @@ namespace Skyline.DataMiner.Utils.TableCleanup
             }
         }
 
-        private void Validate(object[] keys)
+        private void Validate(object[] keys, object[] datetimes)
         {
             if (keys == null)
             {
                 throw new InvalidOperationException("No primary keys were provided.");
             }
 
-            if (Timestamps != null && Timestamps.Count != Keys.Count)
+            if (datetimes != null && datetimes.Length != keys.Length)
             {
                 throw new InvalidOperationException("The number of primary keys does not match the number of timestamps.");
             }
