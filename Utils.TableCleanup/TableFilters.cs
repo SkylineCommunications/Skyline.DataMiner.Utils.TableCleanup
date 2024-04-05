@@ -10,6 +10,12 @@ namespace Skyline.DataMiner.Utils.TableCleanup
     /// </summary>
     public class TableFilters
     {
+        public int NumberOfDeletedRows { get; set; }
+
+        public int AmountOfFilters { get; set; }
+
+        public string[] KeysToDelete { get; set; }
+
         /// <summary>
         /// These Filters are to be used on the TableData class and can be either of CleanupMethod NA, Combo, RowAge or RowCount.
         /// </summary>
@@ -67,10 +73,12 @@ namespace Skyline.DataMiner.Utils.TableCleanup
         public void DeleteFilteredTable(TableCleanupData input)
         {
             HashSet<string> keysToDelete = new HashSet<string>();
+            AmountOfFilters = Filters.Count;
 
             foreach (IFilter<TableCleanupData> filter in this.Filters)
             {
                 input = filter.Execute(input);
+                NumberOfDeletedRows = filter.RemovedPrimaryKeys.Count();
 
                 if (filter.RemovedPrimaryKeys != null)
                 {
@@ -78,6 +86,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup
                 }
             }
 
+            KeysToDelete = keysToDelete.ToArray();
             _protocol.DeleteRow(input.TablePid, keysToDelete.ToArray());
         }
 
