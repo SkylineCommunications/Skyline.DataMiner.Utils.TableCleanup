@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyDescriptionAttribute("The class library helps to manage cleanup of tables based on the age or count of " +
     "rows in the table.")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.1.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.1+39f5fb4e5724fa3591ee6c2fd2d006bde4af912d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.1+0eec86d8d5c25a73ff6c5bc1e8296c059a46f963")]
 [assembly: System.Reflection.AssemblyProductAttribute("Skyline.DataMiner.Utils.TableCleanup")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Skyline.DataMiner.Utils.TableCleanup")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.1.0")]

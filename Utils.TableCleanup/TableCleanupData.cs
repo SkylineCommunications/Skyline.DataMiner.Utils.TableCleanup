@@ -32,7 +32,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup
             if (timeColumnIdx == null)
             {
                 string[] keys = protocol.GetKeys(tablePid);
-                ValidateKeys();
+                //ValidateKeys();
                 for (int i = 0; i < keys.Length; i++)
                 {
                     Rows.Add(new CleanupRow()

@@ -53,8 +53,8 @@ namespace Skyline.DataMiner.Utils.TableCleanup
             List<string> removedKeys = new List<string>();
             List<CleanupRow> filtered = new List<CleanupRow>();
 
-            if (input.Timestamps != null)
-            {
+            //if (input.Timestamps != null)
+            //{
                 foreach (CleanupRow row in input.Rows)
                 {
                     if (row.Timestamp.HasValue)
@@ -79,11 +79,11 @@ namespace Skyline.DataMiner.Utils.TableCleanup
                 RemovedPrimaryKeys = new ReadOnlyCollection<string>(removedKeys);
                 //return new TableCleanupData(filtered);
                 return input;
-            }
+            /*}
             else
             {
                 return input;
-            }
+            }*/
         }
     }
 }
