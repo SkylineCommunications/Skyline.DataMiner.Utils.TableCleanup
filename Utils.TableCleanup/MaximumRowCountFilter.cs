@@ -10,7 +10,6 @@ namespace Skyline.DataMiner.Utils.TableCleanup
     /// </summary>
     public class MaximumRowCountFilter : IFilter<TableCleanupData>
     {
-        public int Threshold { get; set; }
         /// <summary>
         /// The constructor class for the MaximumRowCountFilter.
         /// </summary>
@@ -47,6 +46,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup
         /// The parameter with the collection of primary keys of the rows that are removed from the table.
         /// </summary>
         public ReadOnlyCollection<string> RemovedPrimaryKeys { get; private set; }
+        public int Threshold;
 
         /// <summary>
         /// This method will filter the given input data by the max count filter.

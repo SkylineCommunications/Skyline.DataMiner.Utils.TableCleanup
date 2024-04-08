@@ -3,28 +3,28 @@
   "WorkspaceRootPath": "C:\\GitHub\\Nugets\\Skyline.DataMiner.Utils.TableCleanup\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4386F957-FF6B-41C7-83D4-1DAD1B89CCA3}|Utils.TableCleanup\\Utils.TableCleanup.csproj|C:\\GitHub\\Nugets\\Skyline.DataMiner.Utils.TableCleanup\\utils.tablecleanup\\maximumrowcountfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4386F957-FF6B-41C7-83D4-1DAD1B89CCA3}|Utils.TableCleanup\\Utils.TableCleanup.csproj|solutionrelative:utils.tablecleanup\\maximumrowcountfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4386F957-FF6B-41C7-83D4-1DAD1B89CCA3}|Utils.TableCleanup\\Utils.TableCleanup.csproj|c:\\github\\nugets\\skyline.dataminer.utils.tablecleanup\\utils.tablecleanup\\ifilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4386F957-FF6B-41C7-83D4-1DAD1B89CCA3}|Utils.TableCleanup\\Utils.TableCleanup.csproj|solutionrelative:utils.tablecleanup\\ifilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4386F957-FF6B-41C7-83D4-1DAD1B89CCA3}|Utils.TableCleanup\\Utils.TableCleanup.csproj|C:\\GitHub\\Nugets\\Skyline.DataMiner.Utils.TableCleanup\\utils.tablecleanup\\cleanupmethod.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4386F957-FF6B-41C7-83D4-1DAD1B89CCA3}|Utils.TableCleanup\\Utils.TableCleanup.csproj|solutionrelative:utils.tablecleanup\\cleanupmethod.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4386F957-FF6B-41C7-83D4-1DAD1B89CCA3}|Utils.TableCleanup\\Utils.TableCleanup.csproj|C:\\GitHub\\Nugets\\Skyline.DataMiner.Utils.TableCleanup\\utils.tablecleanup\\maximumrowcountfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4386F957-FF6B-41C7-83D4-1DAD1B89CCA3}|Utils.TableCleanup\\Utils.TableCleanup.csproj|solutionrelative:utils.tablecleanup\\maximumrowcountfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4386F957-FF6B-41C7-83D4-1DAD1B89CCA3}|Utils.TableCleanup\\Utils.TableCleanup.csproj|c:\\github\\nugets\\skyline.dataminer.utils.tablecleanup\\utils.tablecleanup\\tablefilters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4386F957-FF6B-41C7-83D4-1DAD1B89CCA3}|Utils.TableCleanup\\Utils.TableCleanup.csproj|solutionrelative:utils.tablecleanup\\tablefilters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4386F957-FF6B-41C7-83D4-1DAD1B89CCA3}|Utils.TableCleanup\\Utils.TableCleanup.csproj|C:\\GitHub\\Nugets\\Skyline.DataMiner.Utils.TableCleanup\\utils.tablecleanup\\maximumagefilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4386F957-FF6B-41C7-83D4-1DAD1B89CCA3}|Utils.TableCleanup\\Utils.TableCleanup.csproj|solutionrelative:utils.tablecleanup\\maximumagefilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4386F957-FF6B-41C7-83D4-1DAD1B89CCA3}|Utils.TableCleanup\\Utils.TableCleanup.csproj|c:\\github\\nugets\\skyline.dataminer.utils.tablecleanup\\utils.tablecleanup\\ifilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4386F957-FF6B-41C7-83D4-1DAD1B89CCA3}|Utils.TableCleanup\\Utils.TableCleanup.csproj|solutionrelative:utils.tablecleanup\\ifilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{4386F957-FF6B-41C7-83D4-1DAD1B89CCA3}|Utils.TableCleanup\\Utils.TableCleanup.csproj|C:\\GitHub\\Nugets\\Skyline.DataMiner.Utils.TableCleanup\\utils.tablecleanup\\tablecleanupdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4386F957-FF6B-41C7-83D4-1DAD1B89CCA3}|Utils.TableCleanup\\Utils.TableCleanup.csproj|solutionrelative:utils.tablecleanup\\tablecleanupdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4386F957-FF6B-41C7-83D4-1DAD1B89CCA3}|Utils.TableCleanup\\Utils.TableCleanup.csproj|C:\\GitHub\\Nugets\\Skyline.DataMiner.Utils.TableCleanup\\utils.tablecleanup\\cleanupmethod.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4386F957-FF6B-41C7-83D4-1DAD1B89CCA3}|Utils.TableCleanup\\Utils.TableCleanup.csproj|solutionrelative:utils.tablecleanup\\cleanupmethod.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4386F957-FF6B-41C7-83D4-1DAD1B89CCA3}|Utils.TableCleanup\\Utils.TableCleanup.csproj|C:\\GitHub\\Nugets\\Skyline.DataMiner.Utils.TableCleanup\\utils.tablecleanup\\maximumagefilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4386F957-FF6B-41C7-83D4-1DAD1B89CCA3}|Utils.TableCleanup\\Utils.TableCleanup.csproj|solutionrelative:utils.tablecleanup\\maximumagefilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,17 +34,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "IFilter.cs",
               "DocumentMoniker": "C:\\GitHub\\Nugets\\Skyline.DataMiner.Utils.TableCleanup\\Utils.TableCleanup\\IFilter.cs",
               "RelativeDocumentMoniker": "Utils.TableCleanup\\IFilter.cs",
               "ToolTip": "C:\\GitHub\\Nugets\\Skyline.DataMiner.Utils.TableCleanup\\Utils.TableCleanup\\IFilter.cs",
               "RelativeToolTip": "Utils.TableCleanup\\IFilter.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAVAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAoAAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-08T09:18:27.975Z",
               "EditorCaption": ""
@@ -55,7 +55,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "MaximumAgeFilter.cs",
               "DocumentMoniker": "C:\\GitHub\\Nugets\\Skyline.DataMiner.Utils.TableCleanup\\Utils.TableCleanup\\MaximumAgeFilter.cs",
               "RelativeDocumentMoniker": "Utils.TableCleanup\\MaximumAgeFilter.cs",
@@ -68,20 +68,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "MaximumRowCountFilter.cs",
               "DocumentMoniker": "C:\\GitHub\\Nugets\\Skyline.DataMiner.Utils.TableCleanup\\Utils.TableCleanup\\MaximumRowCountFilter.cs",
               "RelativeDocumentMoniker": "Utils.TableCleanup\\MaximumRowCountFilter.cs",
               "ToolTip": "C:\\GitHub\\Nugets\\Skyline.DataMiner.Utils.TableCleanup\\Utils.TableCleanup\\MaximumRowCountFilter.cs",
               "RelativeToolTip": "Utils.TableCleanup\\MaximumRowCountFilter.cs",
-              "ViewState": "AQIAABMAAAAAAAAAAAAQwDUAAAA/AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAuAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-03T08:35:30.822Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "CleanupMethod.cs",
               "DocumentMoniker": "C:\\GitHub\\Nugets\\Skyline.DataMiner.Utils.TableCleanup\\Utils.TableCleanup\\CleanupMethod.cs",
               "RelativeDocumentMoniker": "Utils.TableCleanup\\CleanupMethod.cs",
@@ -100,20 +100,20 @@
               "RelativeDocumentMoniker": "Utils.TableCleanup\\TableFilters.cs",
               "ToolTip": "C:\\GitHub\\Nugets\\Skyline.DataMiner.Utils.TableCleanup\\Utils.TableCleanup\\TableFilters.cs",
               "RelativeToolTip": "Utils.TableCleanup\\TableFilters.cs",
-              "ViewState": "AQIAABQAAAAAAAAAAAAAwEIAAAA/AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-03T08:19:26.724Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "TableCleanupData.cs",
               "DocumentMoniker": "C:\\GitHub\\Nugets\\Skyline.DataMiner.Utils.TableCleanup\\Utils.TableCleanup\\TableCleanupData.cs",
               "RelativeDocumentMoniker": "Utils.TableCleanup\\TableCleanupData.cs",
               "ToolTip": "C:\\GitHub\\Nugets\\Skyline.DataMiner.Utils.TableCleanup\\Utils.TableCleanup\\TableCleanupData.cs",
               "RelativeToolTip": "Utils.TableCleanup\\TableCleanupData.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAwAAAA",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAuwDcAAAAzAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-03T08:09:57.695Z",
               "EditorCaption": ""

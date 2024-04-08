@@ -8,6 +8,8 @@
     /// <typeparam name="T"></typeparam>
     public interface IFilter<T>
     {
+        int Threshold { get; set; }
+
         /// <summary>
         /// Contains the primary keys that are removed by the cleaning and filtering methods from the table.
         /// </summary>

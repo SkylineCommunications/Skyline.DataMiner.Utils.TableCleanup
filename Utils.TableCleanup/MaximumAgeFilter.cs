@@ -35,6 +35,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup
         /// The primary keys deleted and taken out of the table after filtering.
         /// </summary>
         public ReadOnlyCollection<string> RemovedPrimaryKeys { get; private set; }
+        public int Threshold { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         /// <summary>
         /// The parameter setting the number of rows to be deleted when the table reaches its max capacity.
