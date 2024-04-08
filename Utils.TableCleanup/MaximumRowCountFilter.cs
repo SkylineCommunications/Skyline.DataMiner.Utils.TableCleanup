@@ -46,7 +46,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup
         /// The parameter with the collection of primary keys of the rows that are removed from the table.
         /// </summary>
         public ReadOnlyCollection<string> RemovedPrimaryKeys { get; private set; }
-        public int Threshold;
+        public int Threshold { get; set; }
 
         /// <summary>
         /// This method will filter the given input data by the max count filter.
