@@ -29,13 +29,14 @@ namespace Skyline.DataMiner.Utils.TableCleanup
 
             DeletionAmount = deletionAmount;
             MinimumAllowed = DateTime.Now.AddSeconds(-1 * seconds - DeletionAmount);
+            Threshold = -1;
         }
 
         /// <summary>
         /// The primary keys deleted and taken out of the table after filtering.
         /// </summary>
         public ReadOnlyCollection<string> RemovedPrimaryKeys { get; private set; }
-        public int Threshold { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int Threshold { get; set; }
 
         /// <summary>
         /// The parameter setting the number of rows to be deleted when the table reaches its max capacity.
