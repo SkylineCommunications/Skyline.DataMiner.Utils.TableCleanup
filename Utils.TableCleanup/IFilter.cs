@@ -18,6 +18,6 @@
         /// </summary>
         /// <param name="input">The cleanup data that has to be cleaned by the filters.</param>
         /// <returns>The cleanup data after if has been cleaned and filtered by the filters.</returns>
-        TableCleanupData Execute(TableCleanupData input);
+        void Execute(TableCleanupData input);
     }
 }

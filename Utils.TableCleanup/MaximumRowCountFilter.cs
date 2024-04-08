@@ -52,7 +52,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup
         /// </summary>
         /// <returns>The data after it has been cleaned and filtered.returns>
         /// <param name="input">The cleanup info input.</param>
-        public TableCleanupData Execute(TableCleanupData input)
+        public void Execute(TableCleanupData input)
         {
             List<CleanupRow> availableRows = new List<CleanupRow>(input.Rows);
 
@@ -63,14 +63,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup
             {
                 // If a user enters deletionAmount value that is bigger than the actual amount of data, an error would occur.
                 int threshold = DeletionAmount > size ? size : DeletionAmount;
-
                 RemovedPrimaryKeys = new ReadOnlyCollection<string>(availableRows.Take(threshold).Select(r => r.PrimaryKey).ToList());
-                availableRows.RemoveRange(0, threshold);
-                return input;
-            }
-            else
-            {
-                return input;
             }
         }
     }

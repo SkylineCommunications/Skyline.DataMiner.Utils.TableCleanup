@@ -48,7 +48,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup
         /// </summary>
         /// <returns>The data after it has been cleaned and filtered.returns>
         /// <param name="input">The cleanup info input.</param>
-        public TableCleanupData Execute(TableCleanupData input)
+        public void Execute(TableCleanupData input)
         {
             List<string> removedKeys = new List<string>();
             List<CleanupRow> filtered = new List<CleanupRow>();
@@ -74,7 +74,6 @@ namespace Skyline.DataMiner.Utils.TableCleanup
             }
 
             RemovedPrimaryKeys = new ReadOnlyCollection<string>(removedKeys);
-            return input;
         }
     }
 }
