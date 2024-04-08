@@ -124,16 +124,6 @@
             <param name="indexColumnIdx"></param>
             <param name="timeColumnIdx"></param>
         </member>
-        <member name="P:Skyline.DataMiner.Utils.TableCleanup.TableCleanupData.Keys">
-            <summary>
-            The keys of the rows that are remaining in the table after being filtered.
-            </summary>
-        </member>
-        <member name="P:Skyline.DataMiner.Utils.TableCleanup.TableCleanupData.Timestamps">
-            <summary>
-            The timestamps of the rows that need to be referenced when filtering by the age of the rows.
-            </summary>
-        </member>
         <member name="T:Skyline.DataMiner.Utils.TableCleanup.TableFilters">
             <summary>
             Initializes a new instance of the TableFilters class that contains the filters to apply to the TableData class.

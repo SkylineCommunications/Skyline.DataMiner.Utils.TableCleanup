@@ -11,13 +11,6 @@ namespace Skyline.DataMiner.Utils.TableCleanup
     /// </summary>
     public class TableCleanupData
     {
-        /*internal TableCleanupData(List<CleanupRow> rows)
-        {
-            Rows = rows;
-            Keys = rows.Select(r => r.PrimaryKey).ToList();
-            Timestamps = rows.Select(r => r.Timestamp).ToList();
-        }*/
-
         /// <summary>
         /// This constructor should be used if you want to cleanup on all the options.
         /// </summary>
@@ -32,7 +25,6 @@ namespace Skyline.DataMiner.Utils.TableCleanup
             if (timeColumnIdx == null)
             {
                 string[] keys = protocol.GetKeys(tablePid);
-                //ValidateKeys();
                 for (int i = 0; i < keys.Length; i++)
                 {
                     Rows.Add(new CleanupRow()
@@ -48,87 +40,20 @@ namespace Skyline.DataMiner.Utils.TableCleanup
                 object[] indexAndTimeColumns = (object[])protocol.NotifyProtocol((int)SLNetMessages.NotifyType.NT_GET_TABLE_COLUMNS, tablePid, indexAndTimeColumnIdx);
                 object[] keys = (object[])indexAndTimeColumns[0];
                 object[] datetime = (object[])indexAndTimeColumns[1];
-                //string[] keys = Array.ConvertAll((object[])indexAndTimeColumns[0], Convert.ToString);
-                double?[] rowAge = Array.ConvertAll((object[])indexAndTimeColumns[1], x => ConvertObjectToNullableDouble(x));
-                //Keys = keys.ToList();
-                //Timestamps = rowAge.Select(r => ConvertNullableDoubleToNullableDateTime(r)).ToList();
                 Validate(keys, datetime);
-                /*for (int i = 0; i < Keys.Count; i++)
-                {
-                    if (Timestamps != null)
-                    {
-                        Rows.Add(new CleanupRow()
-                        {
-                            PrimaryKey = Keys[i],
-                            Timestamp = Timestamps[i]
-                        });
-                    }
-                    else
-                    {
-                        Rows.Add(new CleanupRow()
-                        {
-                            PrimaryKey = Keys[i],
-                            Timestamp = null
-                        });
-                    }
-                }*/
                 for (int i = 0; i < keys.Length; i++)
                 {
                     CleanupRow row = new CleanupRow();
-                    /*if (Timestamps != null)
-                    {*/
-                        row.PrimaryKey = Convert.ToString(keys[i]);
-                        row.Timestamp = DateTime.FromOADate(Convert.ToDouble(datetime[i]));
-                    /*}
-                    else
-                    {
-                        row.PrimaryKey = Convert.ToString(keys[i]);
-                        row.Timestamp = null;*/
-                        /*Rows.Add(new CleanupRow()
-                        {
-                            PrimaryKey = Convert.ToString(keys[i]),
-                            Timestamp = null
-                        });*/
-                    //}
-
+                    row.PrimaryKey = Convert.ToString(keys[i]);
+                    row.Timestamp = DateTime.FromOADate(Convert.ToDouble(datetime[i]));
                     Rows.Add(row);
                 }
             }
         }
 
-        internal List<string> Keys { get; set; }
-
-        internal List<DateTime?> Timestamps { get; set; }
-
         public List<CleanupRow> Rows { get; private set; }
 
         internal int TablePid { get; private set; }
-
-        private static double? ConvertObjectToNullableDouble(object obj)
-        {
-            if (obj == null || obj == DBNull.Value)
-            {
-                return null; // Return null if the object is null or DBNull
-            }
-            else
-            {
-                // Use Convert.ToDouble() to convert the object to a double
-                return Convert.ToDouble(obj);
-            }
-        }
-
-        private static DateTime? ConvertNullableDoubleToNullableDateTime(double? nullableDouble)
-        {
-            if (nullableDouble.HasValue)
-            {
-                // Convert the double value to a DateTime using DateTime.FromOADate
-                return DateTime.FromOADate(nullableDouble.Value);
-            }
-            else
-            {
-                return null; // Return null if the input is null
-            }
-        }
 
         private void Validate(object[] keys, object[] datetimes)
         {
@@ -140,14 +65,6 @@ namespace Skyline.DataMiner.Utils.TableCleanup
             if (datetimes != null && datetimes.Length != keys.Length)
             {
                 throw new InvalidOperationException("The number of primary keys does not match the number of timestamps.");
-            }
-        }
-
-        private void ValidateKeys()
-        {
-            if (Keys == null)
-            {
-                throw new InvalidOperationException("No primary keys were provided.");
             }
         }
     }

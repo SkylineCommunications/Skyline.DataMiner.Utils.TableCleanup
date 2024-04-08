@@ -10,12 +10,6 @@ namespace Skyline.DataMiner.Utils.TableCleanup
     /// </summary>
     public class TableFilters
     {
-        public int NumberOfDeletedRows { get; set; }
-
-        public int AmountOfFilters { get; set; }
-
-        public string[] KeysToDelete { get; set; }
-
         /// <summary>
         /// These Filters are to be used on the TableData class and can be either of CleanupMethod NA, Combo, RowAge or RowCount.
         /// </summary>
@@ -38,12 +32,12 @@ namespace Skyline.DataMiner.Utils.TableCleanup
                     Convert.ToUInt32(maxAlarmAgePid),
                 };
             object[] tableCleanupValues = (object[])protocol.GetParameters(tableCleanupValuesPids);
-            _cleanupMethod = (CleanupMethod)Convert.ToInt32(tableCleanupValues[0]);
+            CleanupMethod cleanupMethod = (CleanupMethod)Convert.ToInt32(tableCleanupValues[0]);
             int maxAlarmCount = Convert.ToInt32(tableCleanupValues[1]);
             int maxAlarmAge = Convert.ToInt32(tableCleanupValues[2]);
             int deletionAmountMaxAlarmCount = Convert.ToInt32((double)maxAlarmCount / 100 * 20); // Remove 20% of the data
-            int deletionAmountMaxAlarmAge = Convert.ToInt32(60); // 60 seconds
-            switch (_cleanupMethod)
+            int deletionAmountMaxAlarmAge = Convert.ToInt32((double)maxAlarmAge / 100 * 20); // Remove 20% extra time
+            switch (cleanupMethod)
             {
                 case CleanupMethod.RowAgeAndRowCount:
                     Filters.Add(new MaximumRowCountFilter(maxAlarmCount, deletionAmountMaxAlarmCount));
@@ -62,8 +56,6 @@ namespace Skyline.DataMiner.Utils.TableCleanup
             Validate();
         }
 
-        public CleanupMethod _cleanupMethod { get; set; }
-
         private SLProtocol _protocol { get; set; }
 
         /// <summary>
@@ -73,20 +65,15 @@ namespace Skyline.DataMiner.Utils.TableCleanup
         public void DeleteFilteredTable(TableCleanupData input)
         {
             HashSet<string> keysToDelete = new HashSet<string>();
-            AmountOfFilters = Filters.Count;
-
             foreach (IFilter<TableCleanupData> filter in this.Filters)
             {
                 input = filter.Execute(input);
-                NumberOfDeletedRows = filter.RemovedPrimaryKeys.Count();
-
                 if (filter.RemovedPrimaryKeys != null)
                 {
                     keysToDelete.UnionWith(filter.RemovedPrimaryKeys);
                 }
             }
 
-            KeysToDelete = keysToDelete.ToArray();
             _protocol.DeleteRow(input.TablePid, keysToDelete.ToArray());
         }
 

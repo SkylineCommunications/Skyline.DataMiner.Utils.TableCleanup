@@ -52,38 +52,29 @@ namespace Skyline.DataMiner.Utils.TableCleanup
         {
             List<string> removedKeys = new List<string>();
             List<CleanupRow> filtered = new List<CleanupRow>();
-
-            //if (input.Timestamps != null)
-            //{
-                foreach (CleanupRow row in input.Rows)
+            foreach (CleanupRow row in input.Rows)
+            {
+                if (row.Timestamp.HasValue)
                 {
-                    if (row.Timestamp.HasValue)
-                    {
-                        DateTime registered = row.Timestamp.Value;
+                    DateTime registered = row.Timestamp.Value;
 
-                        if (registered > MinimumAllowed)
-                        {
-                            filtered.Add(row);
-                        }
-                        else
-                        {
-                            removedKeys.Add(row.PrimaryKey);
-                        }
-                    }
-                    else
+                    if (registered > MinimumAllowed)
                     {
                         filtered.Add(row);
                     }
+                    else
+                    {
+                        removedKeys.Add(row.PrimaryKey);
+                    }
                 }
+                else
+                {
+                    filtered.Add(row);
+                }
+            }
 
-                RemovedPrimaryKeys = new ReadOnlyCollection<string>(removedKeys);
-                //return new TableCleanupData(filtered);
-                return input;
-            /*}
-            else
-            {
-                return input;
-            }*/
+            RemovedPrimaryKeys = new ReadOnlyCollection<string>(removedKeys);
+            return input;
         }
     }
 }

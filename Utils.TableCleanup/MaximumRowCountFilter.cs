@@ -66,8 +66,6 @@ namespace Skyline.DataMiner.Utils.TableCleanup
 
                 RemovedPrimaryKeys = new ReadOnlyCollection<string>(availableRows.Take(threshold).Select(r => r.PrimaryKey).ToList());
                 availableRows.RemoveRange(0, threshold);
-
-                //return new TableCleanupData(availableRows);
                 return input;
             }
             else
