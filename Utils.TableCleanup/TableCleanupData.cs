@@ -51,7 +51,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup
             }
         }
 
-        public List<CleanupRow> Rows { get; private set; }
+        public List<CleanupRow> Rows { get; set; }
 
         internal int TablePid { get; private set; }
 

@@ -76,6 +76,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup
             }
 
             RemovedPrimaryKeys = new ReadOnlyCollection<string>(removedKeys);
+            input.Rows = filtered;
         }
     }
 }

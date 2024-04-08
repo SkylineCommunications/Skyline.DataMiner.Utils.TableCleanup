@@ -43,8 +43,8 @@ namespace Skyline.DataMiner.Utils.TableCleanup
             switch (cleanupMethod)
             {
                 case CleanupMethod.RowAgeAndRowCount:
-                    Filters.Add(new MaximumRowCountFilter(maxAlarmCount, deletionAmountMaxAlarmCount));
                     Filters.Add(new MaximumAgeFilter(maxAlarmAge, deletionAmountMaxAlarmAge));
+                    Filters.Add(new MaximumRowCountFilter(maxAlarmCount, deletionAmountMaxAlarmCount));
                     break;
 
                 case CleanupMethod.RowAge:
@@ -68,6 +68,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup
         public void DeleteFilteredTable(TableCleanupData input)
         {
             HashSet<string> keysToDelete = new HashSet<string>();
+            //var test = Filters.First(x => x is MaximumAgeFilter);
             foreach (IFilter<TableCleanupData> filter in this.Filters)
             {
                 filter.Execute(input);

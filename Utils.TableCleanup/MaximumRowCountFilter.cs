@@ -65,7 +65,13 @@ namespace Skyline.DataMiner.Utils.TableCleanup
                 // If a user enters deletionAmount value that is bigger than the actual amount of data, an error would occur.
                 int threshold = (DeletionAmount + MaxRowCount) > size ? size : size - (MaxRowCount - DeletionAmount);
                 Threshold = threshold;
-                RemovedPrimaryKeys = new ReadOnlyCollection<string>(availableRows.Take(threshold).Select(r => r.PrimaryKey).ToList());
+                var rowsToDelete = availableRows.Take(threshold);
+                foreach (var row in rowsToDelete)
+                {
+                    input.Rows.Remove(row);
+                }
+
+                RemovedPrimaryKeys = new ReadOnlyCollection<string>(rowsToDelete.Select(r => r.PrimaryKey).ToList());
             }
         }
     }
