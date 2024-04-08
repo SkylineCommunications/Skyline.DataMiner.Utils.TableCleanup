@@ -10,6 +10,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup
     /// </summary>
     public class MaximumRowCountFilter : IFilter<TableCleanupData>
     {
+        public int Threshold { get; set; }
         /// <summary>
         /// The constructor class for the MaximumRowCountFilter.
         /// </summary>
@@ -62,7 +63,8 @@ namespace Skyline.DataMiner.Utils.TableCleanup
             if (isRemovalRequired)
             {
                 // If a user enters deletionAmount value that is bigger than the actual amount of data, an error would occur.
-                int threshold = (DeletionAmount + MaxRowCount) > size ? size : size - (DeletionAmount - MaxRowCount);
+                int threshold = (DeletionAmount + MaxRowCount) > size ? size : (DeletionAmount + MaxRowCount);
+                Threshold = threshold;
                 RemovedPrimaryKeys = new ReadOnlyCollection<string>(availableRows.Take(threshold).Select(r => r.PrimaryKey).ToList());
             }
         }
