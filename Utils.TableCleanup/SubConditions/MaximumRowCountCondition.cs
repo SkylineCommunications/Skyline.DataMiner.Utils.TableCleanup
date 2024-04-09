@@ -9,7 +9,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup.SubFilters
     /// <summary>
     /// The maximum row count allowed on the table that implements the IFilter interface.
     /// </summary>
-    internal class MaximumRowCountFilter : ISubFilter
+    internal class MaximumRowCountCondition : ISubFilter
     {
         /// <summary>
         /// The constructor class for the MaximumRowCountFilter.
@@ -17,7 +17,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup.SubFilters
         /// <param name="maxRows">The max rows that should be allowed for the table.</param>
         /// <param name="deletionAmount">The number of rows to be deleted when the table reaches its max capacity.</param>
         /// <exception cref="ArgumentException">Exception thrown if the given parameters are invalid.</exception>
-        public MaximumRowCountFilter(int maxRows, int deletionAmount)
+        public MaximumRowCountCondition(int maxRows, int deletionAmount)
         {
             if (maxRows < 0)
             {

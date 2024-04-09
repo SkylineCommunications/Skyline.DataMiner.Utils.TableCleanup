@@ -39,6 +39,36 @@
             The time stamp of a given row.
             </summary>
         </member>
+        <member name="T:Skyline.DataMiner.Utils.TableCleanup.Filters.TableMaxRowCondition">
+            <summary>
+            Initializes a new instance of the TableFilters class that contains the filters to apply to the TableData class.
+            </summary>
+        </member>
+        <member name="F:Skyline.DataMiner.Utils.TableCleanup.Filters.TableMaxRowCondition.Filters">
+            <summary>
+            These Filters are to be used on the TableData class and can be either of CleanupMethod NA, Combo, RowAge or RowCount.
+            </summary>
+        </member>
+        <member name="M:Skyline.DataMiner.Utils.TableCleanup.Filters.TableMaxRowCondition.#ctor(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            This is to register the cleanup parameters.
+            </summary>
+            <param name="cleanupMethodPid">This is the cleanup methods that will be used.</param>
+            <param name="maxAlarmCountPid">This is the parameter ID for the maximum amount of rows in the table.</param>
+            <param name="maxAlarmAgePid">This is the parameter ID for the maximum age of rows in the table. This parameter should be configured in seconds.</param>
+        </member>
+        <member name="P:Skyline.DataMiner.Utils.TableCleanup.Filters.TableMaxRowCondition.RemovedPrimaryKeys">
+            <summary>
+            The primary keys that will be removed.
+            </summary>
+        </member>
+        <member name="M:Skyline.DataMiner.Utils.TableCleanup.Filters.TableMaxRowCondition.Execute(Skyline.DataMiner.Scripting.SLProtocol,System.Collections.Generic.List{Skyline.DataMiner.Utils.TableCleanup.CleanupRow})">
+            <summary>
+            Apply the condition on the rows to find the keys to remove.
+            </summary>
+            <param name="protocol">This is needed to get the settings of the filter.</param>
+            <param name="rows">The rows that will be checked on.</param>
+        </member>
         <member name="T:Skyline.DataMiner.Utils.TableCleanup.Interfaces.IFilter">
             <summary>
             An interface for the filters to be implemented to clean and filter the table.
@@ -56,55 +86,30 @@
             <param name="protocol">This is needed to retrieve the values of the settings of the filter.</param>
             <param name="rows">These are the rows where the filter will be executed on.</param>
         </member>
-        <member name="T:Skyline.DataMiner.Utils.TableCleanup.MaximumAgeFilter">
+        <member name="T:Skyline.DataMiner.Utils.TableCleanup.SubFilters.MaximumAgeCondition">
             <summary>
             The maximum age of the rows allowed on the table that implements the IFilter interface.
             </summary>
         </member>
-        <member name="M:Skyline.DataMiner.Utils.TableCleanup.MaximumAgeFilter.#ctor(System.Int32)">
+        <member name="M:Skyline.DataMiner.Utils.TableCleanup.SubFilters.MaximumAgeCondition.#ctor(System.Int32)">
             <summary>
             The maximum age allowed by the filter that cleans all rows with timestamps older than the given seconds provided.
             </summary>
             <param name="seconds">The threshold age allowed of the oldest rows given in seconds.</param>
             <exception cref="T:System.ArgumentException">An exception thrown if the threshold time is invalid.</exception>
         </member>
-        <member name="P:Skyline.DataMiner.Utils.TableCleanup.MaximumAgeFilter.RemovedPrimaryKeys">
+        <member name="P:Skyline.DataMiner.Utils.TableCleanup.SubFilters.MaximumAgeCondition.RemovedPrimaryKeys">
             <summary>
             The primary keys deleted and taken out of the table after filtering.
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Skyline.DataMiner.Utils.TableCleanup.MaximumAgeFilter.Execute(System.Collections.Generic.List{Skyline.DataMiner.Utils.TableCleanup.CleanupRow})" -->
-        <member name="T:Skyline.DataMiner.Utils.TableCleanup.MaximumFilter">
-            <summary>
-            Initializes a new instance of the TableFilters class that contains the filters to apply to the TableData class.
-            </summary>
-        </member>
-        <member name="F:Skyline.DataMiner.Utils.TableCleanup.MaximumFilter.Filters">
-            <summary>
-            These Filters are to be used on the TableData class and can be either of CleanupMethod NA, Combo, RowAge or RowCount.
-            </summary>
-        </member>
-        <member name="M:Skyline.DataMiner.Utils.TableCleanup.MaximumFilter.#ctor(System.Int32,System.Int32,System.Int32)">
-            <summary>
-            This is to register the cleanup parameters.
-            </summary>
-            <param name="protocol">SLPRotocol is used for manipulating the table.</param>
-            <param name="cleanupMethodPid">This is the cleanup methods that will be used.</param>
-            <param name="maxAlarmCountPid">This is the parameter ID for the maximum amount of rows in the table.</param>
-            <param name="maxAlarmAgePid">This is the parameter ID for the maximum age of rows in the table. This parameter should be configured in seconds.</param>
-        </member>
-        <member name="M:Skyline.DataMiner.Utils.TableCleanup.MaximumFilter.DeleteFilteredTable(Skyline.DataMiner.Utils.TableCleanup.TableCleanupData)">
-            <summary>
-            This will clean the table based on the filters provided on the provided tablePid in the protocol.
-            </summary>
-            <param name="input">Takes in CleanupData that will be filtered by the Filters initialized by the Builder class</param>
-        </member>
-        <member name="T:Skyline.DataMiner.Utils.TableCleanup.MaximumRowCountFilter">
+        <!-- Badly formed XML comment ignored for member "M:Skyline.DataMiner.Utils.TableCleanup.SubFilters.MaximumAgeCondition.Execute(System.Collections.Generic.List{Skyline.DataMiner.Utils.TableCleanup.CleanupRow})" -->
+        <member name="T:Skyline.DataMiner.Utils.TableCleanup.SubFilters.MaximumRowCountCondition">
             <summary>
             The maximum row count allowed on the table that implements the IFilter interface.
             </summary>
         </member>
-        <member name="M:Skyline.DataMiner.Utils.TableCleanup.MaximumRowCountFilter.#ctor(System.Int32,System.Int32)">
+        <member name="M:Skyline.DataMiner.Utils.TableCleanup.SubFilters.MaximumRowCountCondition.#ctor(System.Int32,System.Int32)">
             <summary>
             The constructor class for the MaximumRowCountFilter.
             </summary>
@@ -112,28 +117,28 @@
             <param name="deletionAmount">The number of rows to be deleted when the table reaches its max capacity.</param>
             <exception cref="T:System.ArgumentException">Exception thrown if the given parameters are invalid.</exception>
         </member>
-        <member name="P:Skyline.DataMiner.Utils.TableCleanup.MaximumRowCountFilter.DeletionAmount">
+        <member name="P:Skyline.DataMiner.Utils.TableCleanup.SubFilters.MaximumRowCountCondition.DeletionAmount">
             <summary>
             The parameter setting the number of rows to be deleted when the table reaches its max capacity.
             </summary>
         </member>
-        <member name="P:Skyline.DataMiner.Utils.TableCleanup.MaximumRowCountFilter.MaxRowCount">
+        <member name="P:Skyline.DataMiner.Utils.TableCleanup.SubFilters.MaximumRowCountCondition.MaxRowCount">
             <summary>
             The parameter setting the max rows that should be allowed for the table.
             </summary>
         </member>
-        <member name="P:Skyline.DataMiner.Utils.TableCleanup.MaximumRowCountFilter.RemovedPrimaryKeys">
+        <member name="P:Skyline.DataMiner.Utils.TableCleanup.SubFilters.MaximumRowCountCondition.RemovedPrimaryKeys">
             <summary>
             The parameter with the collection of primary keys of the rows that are removed from the table.
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Skyline.DataMiner.Utils.TableCleanup.MaximumRowCountFilter.Execute(System.Collections.Generic.List{Skyline.DataMiner.Utils.TableCleanup.CleanupRow})" -->
-        <member name="T:Skyline.DataMiner.Utils.TableCleanup.TableCleanupData">
+        <!-- Badly formed XML comment ignored for member "M:Skyline.DataMiner.Utils.TableCleanup.SubFilters.MaximumRowCountCondition.Execute(System.Collections.Generic.List{Skyline.DataMiner.Utils.TableCleanup.CleanupRow})" -->
+        <member name="T:Skyline.DataMiner.Utils.TableCleanup.TableCleaner">
             <summary>
             The class containing the row data that needs to be cleaned and filtered.
             </summary>
         </member>
-        <member name="M:Skyline.DataMiner.Utils.TableCleanup.TableCleanupData.#ctor(Skyline.DataMiner.Scripting.SLProtocol,System.Int32,System.Int32,System.Nullable{System.Int32})">
+        <member name="M:Skyline.DataMiner.Utils.TableCleanup.TableCleaner.#ctor(Skyline.DataMiner.Scripting.SLProtocol,System.Int32,System.Int32,System.Nullable{System.Int32})">
             <summary>
             This constructor should be used if you want to cleanup on all the options.
             </summary>
@@ -141,6 +146,19 @@
             <param name="tablePid"></param>
             <param name="indexColumnIdx"></param>
             <param name="timeColumnIdx"></param>
+        </member>
+        <member name="M:Skyline.DataMiner.Utils.TableCleanup.TableCleaner.WithCondition(Skyline.DataMiner.Utils.TableCleanup.Interfaces.IFilter)">
+            <summary>
+            Add a condition that has to be applied on the rows.
+            </summary>
+            <param name="filter">The filter that will be applied.</param>
+            <returns>The tablecleaner object.</returns>
+        </member>
+        <member name="M:Skyline.DataMiner.Utils.TableCleanup.TableCleaner.Cleanup">
+            <summary>
+            The cleanup method will execute all the conditions that where added.
+            </summary>
+            <returns>The tablecleaner object.</returns>
         </member>
     </members>
 </doc>

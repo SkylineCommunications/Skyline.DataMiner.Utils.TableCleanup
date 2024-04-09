@@ -10,7 +10,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup
     /// <summary>
     /// The class containing the row data that needs to be cleaned and filtered.
     /// </summary>
-    public class TableCleanupData
+    public class TableCleaner
     {
         /// <summary>
         /// This constructor should be used if you want to cleanup on all the options.
@@ -19,7 +19,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup
         /// <param name="tablePid"></param>
         /// <param name="indexColumnIdx"></param>
         /// <param name="timeColumnIdx"></param>
-        public TableCleanupData(SLProtocol protocol, int tablePid, int indexColumnIdx, int? timeColumnIdx)
+        public TableCleaner(SLProtocol protocol, int tablePid, int indexColumnIdx, int? timeColumnIdx)
         {
             _Protocol = protocol;
             Filters = new List<IFilter>();
@@ -75,13 +75,22 @@ namespace Skyline.DataMiner.Utils.TableCleanup
             }
         }
 
-        public TableCleanupData WithFilter(IFilter filter)
+        /// <summary>
+        /// Add a condition that has to be applied on the rows.
+        /// </summary>
+        /// <param name="filter">The filter that will be applied.</param>
+        /// <returns>The tablecleaner object.</returns>
+        public TableCleaner WithCondition(IFilter filter)
         {
             Filters.Add(filter);
             return this;
         }
 
-        public TableCleanupData Cleanup()
+        /// <summary>
+        /// The cleanup method will execute all the conditions that where added.
+        /// </summary>
+        /// <returns>The tablecleaner object.</returns>
+        public TableCleaner Cleanup()
         {
             List<string> keysToDelete = new List<string>();
             foreach (var filter in Filters)

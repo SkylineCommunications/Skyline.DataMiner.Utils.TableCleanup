@@ -10,7 +10,7 @@
     /// <summary>
     /// Initializes a new instance of the TableFilters class that contains the filters to apply to the TableData class.
     /// </summary>
-    public class MaximumFilter : IFilter
+    public class TableMaxRowCondition : IFilter
     {
         /// <summary>
         /// These Filters are to be used on the TableData class and can be either of CleanupMethod NA, Combo, RowAge or RowCount.
@@ -20,11 +20,10 @@
         /// <summary>
         /// This is to register the cleanup parameters.
         /// </summary>
-        /// <param name="protocol">SLPRotocol is used for manipulating the table.</param>
         /// <param name="cleanupMethodPid">This is the cleanup methods that will be used.</param>
         /// <param name="maxAlarmCountPid">This is the parameter ID for the maximum amount of rows in the table.</param>
         /// <param name="maxAlarmAgePid">This is the parameter ID for the maximum age of rows in the table. This parameter should be configured in seconds.</param>
-        public MaximumFilter(int cleanupMethodPid, int maxAlarmCountPid, int maxAlarmAgePid)
+        public TableMaxRowCondition(int cleanupMethodPid, int maxAlarmCountPid, int maxAlarmAgePid)
         {
             RemovedPrimaryKeys = new List<string>();
             CleanupMethodPid = cleanupMethodPid;
@@ -32,6 +31,9 @@
             MaxAlarmAgePid = maxAlarmAgePid;
         }
 
+        /// <summary>
+        /// The primary keys that will be removed.
+        /// </summary>
         public List<string> RemovedPrimaryKeys { get; set; }
 
         private int CleanupMethodPid { get; set; }
@@ -42,6 +44,11 @@
 
         private bool IsAgeFilterDefined { get; set; }
 
+        /// <summary>
+        /// Apply the condition on the rows to find the keys to remove.
+        /// </summary>
+        /// <param name="protocol">This is needed to get the settings of the filter.</param>
+        /// <param name="rows">The rows that will be checked on.</param>
         public void Execute(SLProtocol protocol, List<CleanupRow> rows)
         {
             IsAgeFilterDefined = false;
@@ -60,18 +67,18 @@
             switch (cleanupMethod)
             {
                 case CleanupMethod.RowAgeAndRowCount:
-                    Filters.Add(new MaximumAgeFilter(maxAlarmAge));
-                    Filters.Add(new MaximumRowCountFilter(maxAlarmCount, deletionAmountMaxAlarmCount));
+                    Filters.Add(new MaximumAgeCondition(maxAlarmAge));
+                    Filters.Add(new MaximumRowCountCondition(maxAlarmCount, deletionAmountMaxAlarmCount));
                     IsAgeFilterDefined = true;
                     break;
 
                 case CleanupMethod.RowAge:
-                    Filters.Add(new MaximumAgeFilter(maxAlarmAge));
+                    Filters.Add(new MaximumAgeCondition(maxAlarmAge));
                     IsAgeFilterDefined = true;
                     break;
 
                 case CleanupMethod.RowCount:
-                    Filters.Add(new MaximumRowCountFilter(maxAlarmCount, deletionAmountMaxAlarmCount));
+                    Filters.Add(new MaximumRowCountCondition(maxAlarmCount, deletionAmountMaxAlarmCount));
                     break;
             }
 
