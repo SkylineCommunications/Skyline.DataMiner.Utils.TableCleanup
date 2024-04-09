@@ -63,7 +63,6 @@
             int maxAlarmCount = Convert.ToInt32(tableCleanupValues[1]);
             int maxAlarmAge = Convert.ToInt32(tableCleanupValues[2]);
             int deletionAmountMaxAlarmCount = Convert.ToInt32((double)maxAlarmCount / 100 * 20); // Remove 20% of the data
-            //int deletionAmountMaxAlarmAge = Convert.ToInt32((double)maxAlarmAge / 100 * 20); // Remove 20% extra time
             switch (cleanupMethod)
             {
                 case CleanupMethod.RowAgeAndRowCount:
