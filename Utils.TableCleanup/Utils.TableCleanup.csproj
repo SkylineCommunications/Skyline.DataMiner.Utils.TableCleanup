@@ -18,6 +18,11 @@
 		<Authors>SkylineCommunications</Authors>
 		<Company>Skyline Communications</Company>
 		<Description>The class library helps to manage cleanup of tables based on the age or count of rows in the table.</Description>
+		<RepositoryUrl>
+			https://github.com/SkylineCommunications/Skyline.DataMiner.Utils.TableCleanup.git
+		</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<Copyright>Copyright ©  $([System.DateTime]::Now.ToString('yyyy'))</Copyright>
 	</PropertyGroup>
 
 	<ItemGroup>
