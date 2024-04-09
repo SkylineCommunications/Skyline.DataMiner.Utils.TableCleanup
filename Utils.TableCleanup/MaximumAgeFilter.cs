@@ -8,7 +8,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup
     /// <summary>
     /// The maximum age of the rows allowed on the table that implements the IFilter interface.
     /// </summary>
-    public class MaximumAgeFilter : ISubFilter
+    internal class MaximumAgeFilter : ISubFilter
     {
         /// <summary>
         /// The maximum age allowed by the filter that cleans all rows with timestamps older than the given seconds provided.

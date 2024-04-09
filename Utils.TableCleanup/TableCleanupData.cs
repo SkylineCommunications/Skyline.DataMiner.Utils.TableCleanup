@@ -53,7 +53,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup
             }
         }
 
-        public List<CleanupRow> Rows { get; set; }
+        internal List<CleanupRow> Rows { get; set; }
 
         internal int TablePid { get; private set; }
 
@@ -74,12 +74,13 @@ namespace Skyline.DataMiner.Utils.TableCleanup
             }
         }
 
-        public void WithFilter(IFilter filter)
+        public TableCleanupData WithFilter(IFilter filter)
         {
             Filters.Add(filter);
+            return this;
         }
 
-        public void Cleanup()
+        public TableCleanupData Cleanup()
         {
             List<string> keysToDelete = new List<string>();
             foreach (var filter in Filters)
@@ -92,6 +93,8 @@ namespace Skyline.DataMiner.Utils.TableCleanup
             {
                 _Protocol.DeleteRow(TablePid, keysToDelete.ToArray());
             }
+
+            return this;
         }
     }
 }
