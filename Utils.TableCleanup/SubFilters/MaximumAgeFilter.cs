@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace Skyline.DataMiner.Utils.TableCleanup
+namespace Skyline.DataMiner.Utils.TableCleanup.SubFilters
 {
     /// <summary>
     /// The maximum age of the rows allowed on the table that implements the IFilter interface.

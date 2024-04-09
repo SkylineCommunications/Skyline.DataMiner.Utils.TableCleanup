@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
-namespace Skyline.DataMiner.Utils.TableCleanup
+namespace Skyline.DataMiner.Utils.TableCleanup.SubFilters
 {
     /// <summary>
     /// The maximum row count allowed on the table that implements the IFilter interface.
@@ -63,7 +63,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup
             if (isRemovalRequired)
             {
                 // If a user enters deletionAmount value that is bigger than the actual amount of data, an error would occur.
-                int threshold = (DeletionAmount + MaxRowCount) > size ? size : size - (MaxRowCount - DeletionAmount);
+                int threshold = DeletionAmount + MaxRowCount > size ? size : size - (MaxRowCount - DeletionAmount);
                 var rowsToDelete = availableRows.Take(threshold);
                 foreach (var row in rowsToDelete)
                 {

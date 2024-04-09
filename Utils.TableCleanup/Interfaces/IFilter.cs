@@ -1,8 +1,7 @@
-﻿namespace Skyline.DataMiner.Utils.TableCleanup
+﻿namespace Skyline.DataMiner.Utils.TableCleanup.Interfaces
 {
     using Skyline.DataMiner.Scripting;
     using System.Collections.Generic;
-    using System.Collections.ObjectModel;
 
     /// <summary>
     /// An interface for the filters to be implemented to clean and filter the table.
@@ -14,6 +13,11 @@
         /// </summary>
         List<string> RemovedPrimaryKeys { get; }
 
+        /// <summary>
+        /// This will apply the filter on the rows
+        /// </summary>
+        /// <param name="protocol">This is needed to retrieve the values of the settings of the filter.</param>
+        /// <param name="rows">These are the rows where the filter will be executed on.</param>
         void Execute(SLProtocol protocol, List<CleanupRow> rows);
     }
 }

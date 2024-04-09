@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using Skyline.DataMiner.Scripting;
-using Skyline.DataMiner.Utils.TableCleanup.Interfaces;
-
-namespace Skyline.DataMiner.Utils.TableCleanup
+﻿namespace Skyline.DataMiner.Utils.TableCleanup.Filters
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Skyline.DataMiner.Scripting;
+    using Skyline.DataMiner.Utils.TableCleanup.Interfaces;
+    using Skyline.DataMiner.Utils.TableCleanup.SubFilters;
+
     /// <summary>
     /// Initializes a new instance of the TableFilters class that contains the filters to apply to the TableData class.
     /// </summary>
@@ -30,36 +30,6 @@ namespace Skyline.DataMiner.Utils.TableCleanup
             CleanupMethodPid = cleanupMethodPid;
             MaxAlarmCountPid = maxAlarmCountPid;
             MaxAlarmAgePid = maxAlarmAgePid;
-            /*_protocol = protocol;
-            uint[] tableCleanupValuesPids = new uint[]
-                {
-                    Convert.ToUInt32(cleanupMethodPid),
-                    Convert.ToUInt32(maxAlarmCountPid),
-                    Convert.ToUInt32(maxAlarmAgePid),
-                };
-            object[] tableCleanupValues = (object[])protocol.GetParameters(tableCleanupValuesPids);
-            CleanupMethod cleanupMethod = (CleanupMethod)Convert.ToInt32(tableCleanupValues[0]);
-            int maxAlarmCount = Convert.ToInt32(tableCleanupValues[1]);
-            int maxAlarmAge = Convert.ToInt32(tableCleanupValues[2]);
-            int deletionAmountMaxAlarmCount = Convert.ToInt32((double)maxAlarmCount / 100 * 20); // Remove 20% of the data
-            //int deletionAmountMaxAlarmAge = Convert.ToInt32((double)maxAlarmAge / 100 * 20); // Remove 20% extra time
-            switch (cleanupMethod)
-            {
-                case CleanupMethod.RowAgeAndRowCount:
-                    Filters.Add(new MaximumAgeFilter(maxAlarmAge));
-                    Filters.Add(new MaximumRowCountFilter(maxAlarmCount, deletionAmountMaxAlarmCount));
-                    break;
-
-                case CleanupMethod.RowAge:
-                    Filters.Add(new MaximumAgeFilter(maxAlarmAge));
-                    break;
-
-                case CleanupMethod.RowCount:
-                    Filters.Add(new MaximumRowCountFilter(maxAlarmCount, deletionAmountMaxAlarmCount));
-                    break;
-            }
-
-            Validate();*/
         }
 
         public List<string> RemovedPrimaryKeys { get; set; }
@@ -70,29 +40,11 @@ namespace Skyline.DataMiner.Utils.TableCleanup
 
         private int MaxAlarmAgePid { get; set; }
 
-        private SLProtocol _protocol { get; set; }
-
-        /// <summary>
-        /// This will clean the table based on the filters provided on the provided tablePid in the protocol.
-        /// </summary>
-        /// <param name="input">Takes in CleanupData that will be filtered by the Filters initialized by the Builder class</param>
-        public void DeleteFilteredTable(TableCleanupData input)
-        {
-            HashSet<string> keysToDelete = new HashSet<string>();
-            foreach (ISubFilter filter in this.Filters)
-            {
-                filter.Execute(input.Rows);
-                if (filter.RemovedPrimaryKeys != null)
-                {
-                    keysToDelete.UnionWith(filter.RemovedPrimaryKeys);
-                }
-            }
-
-            _protocol.DeleteRow(input.TablePid, keysToDelete.ToArray());
-        }
+        private bool IsAgeFilterDefined { get; set; }
 
         public void Execute(SLProtocol protocol, List<CleanupRow> rows)
         {
+            IsAgeFilterDefined = false;
             uint[] tableCleanupValuesPids = new uint[]
                 {
                     Convert.ToUInt32(CleanupMethodPid),
@@ -110,10 +62,12 @@ namespace Skyline.DataMiner.Utils.TableCleanup
                 case CleanupMethod.RowAgeAndRowCount:
                     Filters.Add(new MaximumAgeFilter(maxAlarmAge));
                     Filters.Add(new MaximumRowCountFilter(maxAlarmCount, deletionAmountMaxAlarmCount));
+                    IsAgeFilterDefined = true;
                     break;
 
                 case CleanupMethod.RowAge:
                     Filters.Add(new MaximumAgeFilter(maxAlarmAge));
+                    IsAgeFilterDefined = true;
                     break;
 
                 case CleanupMethod.RowCount:
@@ -122,6 +76,11 @@ namespace Skyline.DataMiner.Utils.TableCleanup
             }
 
             Validate();
+            if (IsAgeFilterDefined)
+            {
+                rows = rows.OrderBy(x => x.Timestamp).ToList();
+            }
+
             HashSet<string> keysToDelete = new HashSet<string>();
             foreach (ISubFilter filter in Filters)
             {
