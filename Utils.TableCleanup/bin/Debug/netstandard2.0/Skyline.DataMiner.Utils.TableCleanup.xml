@@ -39,35 +39,31 @@
             The time stamp of a given row.
             </summary>
         </member>
-        <member name="T:Skyline.DataMiner.Utils.TableCleanup.IFilter`1">
+        <member name="T:Skyline.DataMiner.Utils.TableCleanup.IFilter">
             <summary>
             An interface for the filters to be implemented to clean and filter the table.
             </summary>
-            <typeparam name="T"></typeparam>
         </member>
-        <member name="P:Skyline.DataMiner.Utils.TableCleanup.IFilter`1.RemovedPrimaryKeys">
+        <member name="P:Skyline.DataMiner.Utils.TableCleanup.IFilter.RemovedPrimaryKeys">
             <summary>
             Contains the primary keys that are removed by the cleaning and filtering methods from the table.
             </summary>
         </member>
-        <member name="M:Skyline.DataMiner.Utils.TableCleanup.IFilter`1.Execute(Skyline.DataMiner.Utils.TableCleanup.TableCleanupData)">
+        <member name="P:Skyline.DataMiner.Utils.TableCleanup.Interfaces.ISubFilter.RemovedPrimaryKeys">
             <summary>
-            The execution of the filtering and cleaning on the table.
+            Contains the primary keys that are removed by the cleaning and filtering methods from the table.
             </summary>
-            <param name="input">The cleanup data that has to be cleaned by the filters.</param>
-            <returns>The cleanup data after if has been cleaned and filtered by the filters.</returns>
         </member>
         <member name="T:Skyline.DataMiner.Utils.TableCleanup.MaximumAgeFilter">
             <summary>
             The maximum age of the rows allowed on the table that implements the IFilter interface.
             </summary>
         </member>
-        <member name="M:Skyline.DataMiner.Utils.TableCleanup.MaximumAgeFilter.#ctor(System.Int32,System.Int32)">
+        <member name="M:Skyline.DataMiner.Utils.TableCleanup.MaximumAgeFilter.#ctor(System.Int32)">
             <summary>
             The maximum age allowed by the filter that cleans all rows with timestamps older than the given seconds provided.
             </summary>
             <param name="seconds">The threshold age allowed of the oldest rows given in seconds.</param>
-            <param name="deletionAmount">The amount of rows that have to be deleted.</param>
             <exception cref="T:System.ArgumentException">An exception thrown if the threshold time is invalid.</exception>
         </member>
         <member name="P:Skyline.DataMiner.Utils.TableCleanup.MaximumAgeFilter.RemovedPrimaryKeys">
@@ -75,12 +71,32 @@
             The primary keys deleted and taken out of the table after filtering.
             </summary>
         </member>
-        <member name="P:Skyline.DataMiner.Utils.TableCleanup.MaximumAgeFilter.DeletionAmount">
+        <!-- Badly formed XML comment ignored for member "M:Skyline.DataMiner.Utils.TableCleanup.MaximumAgeFilter.Execute(System.Collections.Generic.List{Skyline.DataMiner.Utils.TableCleanup.CleanupRow})" -->
+        <member name="T:Skyline.DataMiner.Utils.TableCleanup.MaximumFilter">
             <summary>
-            The parameter setting the number of rows to be deleted when the table reaches its max capacity.
+            Initializes a new instance of the TableFilters class that contains the filters to apply to the TableData class.
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Skyline.DataMiner.Utils.TableCleanup.MaximumAgeFilter.Execute(Skyline.DataMiner.Utils.TableCleanup.TableCleanupData)" -->
+        <member name="F:Skyline.DataMiner.Utils.TableCleanup.MaximumFilter.Filters">
+            <summary>
+            These Filters are to be used on the TableData class and can be either of CleanupMethod NA, Combo, RowAge or RowCount.
+            </summary>
+        </member>
+        <member name="M:Skyline.DataMiner.Utils.TableCleanup.MaximumFilter.#ctor(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            This is to register the cleanup parameters.
+            </summary>
+            <param name="protocol">SLPRotocol is used for manipulating the table.</param>
+            <param name="cleanupMethodPid">This is the cleanup methods that will be used.</param>
+            <param name="maxAlarmCountPid">This is the parameter ID for the maximum amount of rows in the table.</param>
+            <param name="maxAlarmAgePid">This is the parameter ID for the maximum age of rows in the table. This parameter should be configured in seconds.</param>
+        </member>
+        <member name="M:Skyline.DataMiner.Utils.TableCleanup.MaximumFilter.DeleteFilteredTable(Skyline.DataMiner.Utils.TableCleanup.TableCleanupData)">
+            <summary>
+            This will clean the table based on the filters provided on the provided tablePid in the protocol.
+            </summary>
+            <param name="input">Takes in CleanupData that will be filtered by the Filters initialized by the Builder class</param>
+        </member>
         <member name="T:Skyline.DataMiner.Utils.TableCleanup.MaximumRowCountFilter">
             <summary>
             The maximum row count allowed on the table that implements the IFilter interface.
@@ -109,7 +125,7 @@
             The parameter with the collection of primary keys of the rows that are removed from the table.
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Skyline.DataMiner.Utils.TableCleanup.MaximumRowCountFilter.Execute(Skyline.DataMiner.Utils.TableCleanup.TableCleanupData)" -->
+        <!-- Badly formed XML comment ignored for member "M:Skyline.DataMiner.Utils.TableCleanup.MaximumRowCountFilter.Execute(System.Collections.Generic.List{Skyline.DataMiner.Utils.TableCleanup.CleanupRow})" -->
         <member name="T:Skyline.DataMiner.Utils.TableCleanup.TableCleanupData">
             <summary>
             The class containing the row data that needs to be cleaned and filtered.
@@ -123,31 +139,6 @@
             <param name="tablePid"></param>
             <param name="indexColumnIdx"></param>
             <param name="timeColumnIdx"></param>
-        </member>
-        <member name="T:Skyline.DataMiner.Utils.TableCleanup.TableFilters">
-            <summary>
-            Initializes a new instance of the TableFilters class that contains the filters to apply to the TableData class.
-            </summary>
-        </member>
-        <member name="F:Skyline.DataMiner.Utils.TableCleanup.TableFilters.Filters">
-            <summary>
-            These Filters are to be used on the TableData class and can be either of CleanupMethod NA, Combo, RowAge or RowCount.
-            </summary>
-        </member>
-        <member name="M:Skyline.DataMiner.Utils.TableCleanup.TableFilters.#ctor(Skyline.DataMiner.Scripting.SLProtocol,System.Int32,System.Int32,System.Int32)">
-            <summary>
-            This is to register the cleanup parameters.
-            </summary>
-            <param name="protocol">SLPRotocol is used for manipulating the table.</param>
-            <param name="cleanupMethodPid">This is the cleanup methods that will be used.</param>
-            <param name="maxAlarmCountPid">This is the parameter ID for the maximum amount of rows in the table.</param>
-            <param name="maxAlarmAgePid">This is the parameter ID for the maximum age of rows in the table. This parameter should be configured in seconds.</param>
-        </member>
-        <member name="M:Skyline.DataMiner.Utils.TableCleanup.TableFilters.DeleteFilteredTable(Skyline.DataMiner.Utils.TableCleanup.TableCleanupData)">
-            <summary>
-            This will clean the table based on the filters provided on the provided tablePid in the protocol.
-            </summary>
-            <param name="input">Takes in CleanupData that will be filtered by the Filters initialized by the Builder class</param>
         </member>
     </members>
 </doc>

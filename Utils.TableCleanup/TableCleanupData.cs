@@ -20,6 +20,8 @@ namespace Skyline.DataMiner.Utils.TableCleanup
         /// <param name="timeColumnIdx"></param>
         public TableCleanupData(SLProtocol protocol, int tablePid, int indexColumnIdx, int? timeColumnIdx)
         {
+            _Protocol = protocol;
+            Filters = new List<IFilter>();
             Rows = new List<CleanupRow>();
             TablePid = tablePid;
             if (timeColumnIdx == null)
@@ -55,6 +57,10 @@ namespace Skyline.DataMiner.Utils.TableCleanup
 
         internal int TablePid { get; private set; }
 
+        internal List<IFilter> Filters { get; set; }
+
+        private SLProtocol _Protocol {  get; set; }
+
         private void Validate(object[] keys, object[] datetimes)
         {
             if (keys == null)
@@ -65,6 +71,26 @@ namespace Skyline.DataMiner.Utils.TableCleanup
             if (datetimes != null && datetimes.Length != keys.Length)
             {
                 throw new InvalidOperationException("The number of primary keys does not match the number of timestamps.");
+            }
+        }
+
+        public void WithFilter(IFilter filter)
+        {
+            Filters.Add(filter);
+        }
+
+        public void Cleanup()
+        {
+            List<string> keysToDelete = new List<string>();
+            foreach (var filter in Filters)
+            {
+                filter.Execute(_Protocol, Rows);
+                keysToDelete.AddRange(filter.RemovedPrimaryKeys);
+            }
+
+            if (keysToDelete.Count > 0)
+            {
+                _Protocol.DeleteRow(TablePid, keysToDelete.ToArray());
             }
         }
     }
