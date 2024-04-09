@@ -6,7 +6,7 @@
     /// <summary>
     /// An interface for the filters to be implemented to clean and filter the table.
     /// </summary>
-    public interface IFilter
+    public interface ICondition
     {
         /// <summary>
         /// Contains the primary keys that are removed by the cleaning and filtering methods from the table.

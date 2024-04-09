@@ -10,12 +10,12 @@
     /// <summary>
     /// Initializes a new instance of the TableFilters class that contains the filters to apply to the TableData class.
     /// </summary>
-    public class TableMaxRowCondition : IFilter
+    public class TableMaxRowCondition : ICondition
     {
         /// <summary>
         /// These Filters are to be used on the TableData class and can be either of CleanupMethod NA, Combo, RowAge or RowCount.
         /// </summary>
-        internal readonly List<ISubFilter> Filters = new List<ISubFilter>();
+        internal readonly List<ISubCondition> Filters = new List<ISubCondition>();
 
         /// <summary>
         /// This is to register the cleanup parameters.
@@ -88,7 +88,7 @@
             }
 
             HashSet<string> keysToDelete = new HashSet<string>();
-            foreach (ISubFilter filter in Filters)
+            foreach (ISubCondition filter in Filters)
             {
                 filter.Execute(rows);
                 if (filter.RemovedPrimaryKeys != null)

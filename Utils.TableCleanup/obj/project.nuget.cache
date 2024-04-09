@@ -1,31 +1,25 @@
 {
   "version": 2,
-  "dgSpecHash": "NBFvGPV0Ob5gKFViMDdtehKDeQjB6Jn41jF2T5rWSxEExx+rvPfPgX7F6CqYkfK+tbh3+eQucuYEheEF/xd97A==",
+  "dgSpecHash": "gY7hK/Y1ZJRrMRi0wmOio9PMkTt5TyU2wUd5DuQWjuwQx8+6CFl4HUY70Y2J8OGP71Mee7gsjckFQatL9Ha+Rg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\JoshuaWO\\source\\repos\\Skyline.Dataminer.Utils.TableCleanup\\Utils.TableCleanup\\Utils.TableCleanup.csproj",
+  "projectFilePath": "C:\\GitHub\\Nugets\\Skyline.DataMiner.Utils.TableCleanup\\Utils.TableCleanup\\Utils.TableCleanup.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\JoshuaWO\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Users\\JoshuaWO\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
-    "C:\\Users\\JoshuaWO\\.nuget\\packages\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",
-    "C:\\Users\\JoshuaWO\\.nuget\\packages\\sharpziplib\\1.3.2\\sharpziplib.1.3.2.nupkg.sha512",
-    "C:\\Users\\JoshuaWO\\.nuget\\packages\\skyline.dataminer.dev.common\\10.2.0.6\\skyline.dataminer.dev.common.10.2.0.6.nupkg.sha512",
-    "C:\\Users\\JoshuaWO\\.nuget\\packages\\skyline.dataminer.dev.protocol\\10.2.0.6\\skyline.dataminer.dev.protocol.10.2.0.6.nupkg.sha512",
-    "C:\\Users\\JoshuaWO\\.nuget\\packages\\skyline.dataminer.files.interop.sldms\\10.2.0.6\\skyline.dataminer.files.interop.sldms.10.2.0.6.nupkg.sha512",
-    "C:\\Users\\JoshuaWO\\.nuget\\packages\\skyline.dataminer.files.protobufnet\\10.2.0.6\\skyline.dataminer.files.protobufnet.10.2.0.6.nupkg.sha512",
-    "C:\\Users\\JoshuaWO\\.nuget\\packages\\skyline.dataminer.files.qactionhelperbaseclasses\\10.2.0.6\\skyline.dataminer.files.qactionhelperbaseclasses.10.2.0.6.nupkg.sha512",
-    "C:\\Users\\JoshuaWO\\.nuget\\packages\\skyline.dataminer.files.skyline.dataminer.storage.types\\10.2.0.6\\skyline.dataminer.files.skyline.dataminer.storage.types.10.2.0.6.nupkg.sha512",
-    "C:\\Users\\JoshuaWO\\.nuget\\packages\\skyline.dataminer.files.slloggerutil\\10.2.0.6\\skyline.dataminer.files.slloggerutil.10.2.0.6.nupkg.sha512",
-    "C:\\Users\\JoshuaWO\\.nuget\\packages\\skyline.dataminer.files.slmanagedscripting\\10.2.0.6\\skyline.dataminer.files.slmanagedscripting.10.2.0.6.nupkg.sha512",
-    "C:\\Users\\JoshuaWO\\.nuget\\packages\\skyline.dataminer.files.slnettypes\\10.2.0.6\\skyline.dataminer.files.slnettypes.10.2.0.6.nupkg.sha512",
-    "C:\\Users\\JoshuaWO\\.nuget\\packages\\skyline.dataminer.files.slprotobuflibrary\\10.2.0.6\\skyline.dataminer.files.slprotobuflibrary.10.2.0.6.nupkg.sha512"
+    "C:\\Users\\Robbie.SKYLINE2\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\Robbie.SKYLINE2\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\Robbie.SKYLINE2\\.nuget\\packages\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",
+    "C:\\Users\\Robbie.SKYLINE2\\.nuget\\packages\\sharpziplib\\1.3.2\\sharpziplib.1.3.2.nupkg.sha512",
+    "C:\\Users\\Robbie.SKYLINE2\\.nuget\\packages\\skyline.dataminer.dev.common\\10.2.0.6\\skyline.dataminer.dev.common.10.2.0.6.nupkg.sha512",
+    "C:\\Users\\Robbie.SKYLINE2\\.nuget\\packages\\skyline.dataminer.dev.protocol\\10.2.0.6\\skyline.dataminer.dev.protocol.10.2.0.6.nupkg.sha512",
+    "C:\\Users\\Robbie.SKYLINE2\\.nuget\\packages\\skyline.dataminer.files.interop.sldms\\10.2.0.6\\skyline.dataminer.files.interop.sldms.10.2.0.6.nupkg.sha512",
+    "C:\\Users\\Robbie.SKYLINE2\\.nuget\\packages\\skyline.dataminer.files.protobufnet\\10.2.0.6\\skyline.dataminer.files.protobufnet.10.2.0.6.nupkg.sha512",
+    "C:\\Users\\Robbie.SKYLINE2\\.nuget\\packages\\skyline.dataminer.files.qactionhelperbaseclasses\\10.2.0.6\\skyline.dataminer.files.qactionhelperbaseclasses.10.2.0.6.nupkg.sha512",
+    "C:\\Users\\Robbie.SKYLINE2\\.nuget\\packages\\skyline.dataminer.files.skyline.dataminer.storage.types\\10.2.0.6\\skyline.dataminer.files.skyline.dataminer.storage.types.10.2.0.6.nupkg.sha512",
+    "C:\\Users\\Robbie.SKYLINE2\\.nuget\\packages\\skyline.dataminer.files.slloggerutil\\10.2.0.6\\skyline.dataminer.files.slloggerutil.10.2.0.6.nupkg.sha512",
+    "C:\\Users\\Robbie.SKYLINE2\\.nuget\\packages\\skyline.dataminer.files.slmanagedscripting\\10.2.0.6\\skyline.dataminer.files.slmanagedscripting.10.2.0.6.nupkg.sha512",
+    "C:\\Users\\Robbie.SKYLINE2\\.nuget\\packages\\skyline.dataminer.files.slnettypes\\10.2.0.6\\skyline.dataminer.files.slnettypes.10.2.0.6.nupkg.sha512",
+    "C:\\Users\\Robbie.SKYLINE2\\.nuget\\packages\\skyline.dataminer.files.slprotobuflibrary\\10.2.0.6\\skyline.dataminer.files.slprotobuflibrary.10.2.0.6.nupkg.sha512"
   ],
   "logs": [
-    {
-      "code": "NU1803",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "You are running the 'restore' operation with an 'HTTP' source, 'http://devcore3:81/nuget'. Non-HTTPS access will be removed in a future version. Consider migrating to an 'HTTPS' source."
-    },
     {
       "code": "NU1701",
       "level": "Warning",

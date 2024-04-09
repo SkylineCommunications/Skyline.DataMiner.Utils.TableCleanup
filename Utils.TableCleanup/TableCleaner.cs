@@ -22,7 +22,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup
         public TableCleaner(SLProtocol protocol, int tablePid, int indexColumnIdx, int? timeColumnIdx)
         {
             _Protocol = protocol;
-            Filters = new List<IFilter>();
+            Filters = new List<ICondition>();
             Rows = new List<CleanupRow>();
             TablePid = tablePid;
             if (timeColumnIdx == null)
@@ -58,7 +58,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup
 
         internal int TablePid { get; private set; }
 
-        internal List<IFilter> Filters { get; set; }
+        internal List<ICondition> Filters { get; set; }
 
         private SLProtocol _Protocol {  get; set; }
 
@@ -80,7 +80,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup
         /// </summary>
         /// <param name="filter">The filter that will be applied.</param>
         /// <returns>The tablecleaner object.</returns>
-        public TableCleaner WithCondition(IFilter filter)
+        public TableCleaner WithCondition(ICondition filter)
         {
             Filters.Add(filter);
             return this;

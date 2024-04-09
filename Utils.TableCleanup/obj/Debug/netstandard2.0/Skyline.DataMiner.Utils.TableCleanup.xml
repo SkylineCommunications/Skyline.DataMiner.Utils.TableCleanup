@@ -69,17 +69,17 @@
             <param name="protocol">This is needed to get the settings of the filter.</param>
             <param name="rows">The rows that will be checked on.</param>
         </member>
-        <member name="T:Skyline.DataMiner.Utils.TableCleanup.Interfaces.IFilter">
+        <member name="T:Skyline.DataMiner.Utils.TableCleanup.Interfaces.ICondition">
             <summary>
             An interface for the filters to be implemented to clean and filter the table.
             </summary>
         </member>
-        <member name="P:Skyline.DataMiner.Utils.TableCleanup.Interfaces.IFilter.RemovedPrimaryKeys">
+        <member name="P:Skyline.DataMiner.Utils.TableCleanup.Interfaces.ICondition.RemovedPrimaryKeys">
             <summary>
             Contains the primary keys that are removed by the cleaning and filtering methods from the table.
             </summary>
         </member>
-        <member name="M:Skyline.DataMiner.Utils.TableCleanup.Interfaces.IFilter.Execute(Skyline.DataMiner.Scripting.SLProtocol,System.Collections.Generic.List{Skyline.DataMiner.Utils.TableCleanup.CleanupRow})">
+        <member name="M:Skyline.DataMiner.Utils.TableCleanup.Interfaces.ICondition.Execute(Skyline.DataMiner.Scripting.SLProtocol,System.Collections.Generic.List{Skyline.DataMiner.Utils.TableCleanup.CleanupRow})">
             <summary>
             This will apply the filter on the rows
             </summary>
@@ -147,7 +147,7 @@
             <param name="indexColumnIdx"></param>
             <param name="timeColumnIdx"></param>
         </member>
-        <member name="M:Skyline.DataMiner.Utils.TableCleanup.TableCleaner.WithCondition(Skyline.DataMiner.Utils.TableCleanup.Interfaces.IFilter)">
+        <member name="M:Skyline.DataMiner.Utils.TableCleanup.TableCleaner.WithCondition(Skyline.DataMiner.Utils.TableCleanup.Interfaces.ICondition)">
             <summary>
             Add a condition that has to be applied on the rows.
             </summary>

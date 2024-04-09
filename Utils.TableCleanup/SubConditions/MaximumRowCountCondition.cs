@@ -9,7 +9,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup.SubFilters
     /// <summary>
     /// The maximum row count allowed on the table that implements the IFilter interface.
     /// </summary>
-    internal class MaximumRowCountCondition : ISubFilter
+    internal class MaximumRowCountCondition : ISubCondition
     {
         /// <summary>
         /// The constructor class for the MaximumRowCountFilter.

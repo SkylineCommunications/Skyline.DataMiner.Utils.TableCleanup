@@ -13,7 +13,7 @@
     <description>The class library helps to manage cleanup of tables based on the age or count of rows in the table.</description>
     <copyright>Copyright ©  2024</copyright>
     <tags>Skyline DataMiner</tags>
-    <repository type="git" url="https://github.com/SkylineCommunications/Skyline.DataMiner.Utils.TableCleanup.git" />
+    <repository type="git" url="https://github.com/SkylineCommunications/Skyline.DataMiner.Utils.TableCleanup.git" commit="48030b56e4d820af05b736aed464ddd19141e203" />
     <dependencies>
       <group targetFramework=".NETStandard2.0">
         <dependency id="Skyline.DataMiner.Dev.Protocol" version="10.2.0.6" exclude="Build,Analyzers" />
@@ -21,10 +21,10 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="C:\Users\JoshuaWO\source\repos\Skyline.Dataminer.Utils.TableCleanup\Utils.TableCleanup\bin\Debug\netstandard2.0\Skyline.DataMiner.Utils.TableCleanup.dll" target="lib\netstandard2.0\Skyline.DataMiner.Utils.TableCleanup.dll" />
-    <file src="C:\Users\JoshuaWO\source\repos\Skyline.Dataminer.Utils.TableCleanup\Utils.TableCleanup\bin\Debug\netstandard2.0\Skyline.DataMiner.Utils.TableCleanup.xml" target="lib\netstandard2.0\Skyline.DataMiner.Utils.TableCleanup.xml" />
-    <file src="C:\Users\JoshuaWO\source\repos\Skyline.Dataminer.Utils.TableCleanup\Utils.TableCleanup\README.md" target="README.md" />
-    <file src="C:\Users\JoshuaWO\source\repos\Skyline.Dataminer.Utils.TableCleanup\Utils.TableCleanup\LICENSE.txt" target="LICENSE.txt" />
-    <file src="C:\Users\JoshuaWO\source\repos\Skyline.Dataminer.Utils.TableCleanup\Utils.TableCleanup\nuget\Icon.png" target="Icon.png" />
+    <file src="C:\GitHub\Nugets\Skyline.DataMiner.Utils.TableCleanup\Utils.TableCleanup\bin\Debug\netstandard2.0\Skyline.DataMiner.Utils.TableCleanup.dll" target="lib\netstandard2.0\Skyline.DataMiner.Utils.TableCleanup.dll" />
+    <file src="C:\GitHub\Nugets\Skyline.DataMiner.Utils.TableCleanup\Utils.TableCleanup\bin\Debug\netstandard2.0\Skyline.DataMiner.Utils.TableCleanup.xml" target="lib\netstandard2.0\Skyline.DataMiner.Utils.TableCleanup.xml" />
+    <file src="C:\GitHub\Nugets\Skyline.DataMiner.Utils.TableCleanup\Utils.TableCleanup\README.md" target="README.md" />
+    <file src="C:\GitHub\Nugets\Skyline.DataMiner.Utils.TableCleanup\Utils.TableCleanup\LICENSE.txt" target="LICENSE.txt" />
+    <file src="C:\GitHub\Nugets\Skyline.DataMiner.Utils.TableCleanup\Utils.TableCleanup\nuget\Icon.png" target="Icon.png" />
   </files>
 </package>

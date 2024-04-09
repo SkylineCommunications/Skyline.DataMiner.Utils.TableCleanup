@@ -3,7 +3,7 @@
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
 
-    internal interface ISubFilter
+    internal interface ISubCondition
     {
         ReadOnlyCollection<string> RemovedPrimaryKeys { get; }
 
