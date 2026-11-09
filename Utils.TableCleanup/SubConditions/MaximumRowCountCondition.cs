@@ -1,8 +1,9 @@
-﻿using Skyline.DataMiner.Utils.TableCleanup.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+
+using Skyline.DataMiner.Utils.TableCleanup.Interfaces;
 
 namespace Skyline.DataMiner.Utils.TableCleanup.SubFilters
 {
@@ -21,12 +22,12 @@ namespace Skyline.DataMiner.Utils.TableCleanup.SubFilters
         {
             if (maxRows < 0)
             {
-                throw new ArgumentException("The provided value cannot be negative.", "maxRows");
+                throw new ArgumentException("The provided value cannot be negative.", nameof(maxRows));
             }
 
             if (deletionAmount < 0)
             {
-                throw new ArgumentException("The provided value cannot be negative.", "deletionAmount");
+                throw new ArgumentException("The provided value cannot be negative.", nameof(deletionAmount));
             }
 
             MaxRowCount = maxRows;
@@ -51,11 +52,11 @@ namespace Skyline.DataMiner.Utils.TableCleanup.SubFilters
         /// <summary>
         /// This method will filter the given input data by the max count filter.
         /// </summary>
-        /// <returns>The data after it has been cleaned and filtered.returns>
-        /// <param name="input">The cleanup info input.</param>
+        /// <param name="rows">The rows to be considered for deletion.</param>
+        /// <returns>The data after it has been cleaned and filtered.</returns>
         public void Execute(List<CleanupRow> rows)
         {
-            List<CleanupRow> availableRows = new List<CleanupRow>(rows);
+            var availableRows = new List<CleanupRow>(rows);
 
             int size = availableRows.Count;
             bool isRemovalRequired = size > MaxRowCount;
@@ -63,7 +64,10 @@ namespace Skyline.DataMiner.Utils.TableCleanup.SubFilters
             if (isRemovalRequired)
             {
                 // If a user enters deletionAmount value that is bigger than the actual amount of data, an error would occur.
-                int threshold = DeletionAmount + MaxRowCount > size ? size : size - (MaxRowCount - DeletionAmount);
+                int threshold = DeletionAmount + MaxRowCount > size
+                    ? size
+                    : size - (MaxRowCount - DeletionAmount);
+
                 var rowsToDelete = availableRows.Take(threshold);
                 foreach (var row in rowsToDelete)
                 {

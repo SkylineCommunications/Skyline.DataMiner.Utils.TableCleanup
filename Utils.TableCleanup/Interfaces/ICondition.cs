@@ -1,7 +1,8 @@
 ﻿namespace Skyline.DataMiner.Utils.TableCleanup.Interfaces
 {
-    using Skyline.DataMiner.Scripting;
     using System.Collections.Generic;
+
+    using Skyline.DataMiner.Scripting;
 
     /// <summary>
     /// An interface for the filters to be implemented to clean and filter the table.

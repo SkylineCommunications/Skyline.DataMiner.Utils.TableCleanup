@@ -1,7 +1,8 @@
-﻿using Skyline.DataMiner.Utils.TableCleanup.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+
+using Skyline.DataMiner.Utils.TableCleanup.Interfaces;
 
 namespace Skyline.DataMiner.Utils.TableCleanup.SubFilters
 {
@@ -19,7 +20,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup.SubFilters
         {
             if (seconds <= 0)
             {
-                throw new ArgumentException("Value cannot be smaller or equal to zero.", "seconds");
+                throw new ArgumentException("Value cannot be smaller or equal to zero.", nameof(seconds));
             }
 
             MinimumAllowed = DateTime.Now.AddSeconds(-1 * seconds);
@@ -35,13 +36,13 @@ namespace Skyline.DataMiner.Utils.TableCleanup.SubFilters
         /// <summary>
         /// This method will filter the given input data by the max age filter.
         /// </summary>
-        /// <returns>The data after it has been cleaned and filtered.returns>
-        /// <param name="input">The cleanup info input.</param>
+        /// <param name="rows">The rows to be considered for deletion.</param>
+        /// <returns>The data after it has been cleaned and filtered.</returns>
         public void Execute(List<CleanupRow> rows)
         {
-            List<string> removedKeys = new List<string>();
-            List<CleanupRow> filtered = new List<CleanupRow>();
-            foreach (CleanupRow row in rows)
+            var removedKeys = new List<string>();
+            var filtered = new List<CleanupRow>();
+            foreach (var row in rows)
             {
                 if (row.Timestamp.HasValue)
                 {
