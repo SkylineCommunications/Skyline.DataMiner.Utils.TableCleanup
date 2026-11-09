@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Skyline.DataMiner.Scripting;
+using Skyline.DataMiner.Utils.Protocol.Extension;
 using Skyline.DataMiner.Utils.TableCleanup.Interfaces;
-using SLNetMessages = Skyline.DataMiner.Net.Messages;
 
 namespace Skyline.DataMiner.Utils.TableCleanup
 {
@@ -11,6 +11,8 @@ namespace Skyline.DataMiner.Utils.TableCleanup
     /// </summary>
     public class TableCleaner
     {
+        private readonly SLProtocol protocol;
+
         /// <summary>
         /// This constructor should be used if you want to cleanup on all the options.
         /// </summary>
@@ -20,10 +22,12 @@ namespace Skyline.DataMiner.Utils.TableCleanup
         /// <param name="timeColumnIdx"></param>
         public TableCleaner(SLProtocol protocol, int tablePid, int indexColumnIdx, int? timeColumnIdx)
         {
-            _Protocol = protocol;
-            Filters = new List<ICondition>();
-            Rows = new List<CleanupRow>();
+            this.protocol = protocol;
             TablePid = tablePid;
+
+            Filters = new List<ICondition>();
+
+            Rows = new List<CleanupRow>();
             if (timeColumnIdx == null)
             {
                 string[] keys = protocol.GetKeys(tablePid);
@@ -38,16 +42,19 @@ namespace Skyline.DataMiner.Utils.TableCleanup
             }
             else
             {
-                object indexAndTimeColumnIdx = new uint[] { Convert.ToUInt32(indexColumnIdx), Convert.ToUInt32(timeColumnIdx) };
-                object[] indexAndTimeColumns = (object[])protocol.NotifyProtocol((int)SLNetMessages.NotifyType.NT_GET_TABLE_COLUMNS, tablePid, indexAndTimeColumnIdx);
-                object[] keys = (object[])indexAndTimeColumns[0];
-                object[] datetime = (object[])indexAndTimeColumns[1];
-                Validate(keys, datetime);
+                uint[] columnsToGetIdx = new uint[] { Convert.ToUInt32(indexColumnIdx), Convert.ToUInt32(timeColumnIdx) };
+                object[] columnsData = protocol.GetColumns(tablePid, columnsToGetIdx);
+                object[] keys = (object[])columnsData[0];
+                object[] datetimes = (object[])columnsData[1];
+
+                Validate(keys, datetimes);
                 for (int i = 0; i < keys.Length; i++)
                 {
-                    CleanupRow row = new CleanupRow();
-                    row.PrimaryKey = Convert.ToString(keys[i]);
-                    row.Timestamp = DateTime.FromOADate(Convert.ToDouble(datetime[i]));
+                    var row = new CleanupRow
+                    {
+                        PrimaryKey = Convert.ToString(keys[i]),
+                        Timestamp = DateTime.FromOADate(Convert.ToDouble(datetimes[i]))
+                    };
                     Rows.Add(row);
                 }
             }
@@ -58,8 +65,6 @@ namespace Skyline.DataMiner.Utils.TableCleanup
         internal int TablePid { get; private set; }
 
         internal List<ICondition> Filters { get; set; }
-
-        private SLProtocol _Protocol {  get; set; }
 
         private void Validate(object[] keys, object[] datetimes)
         {
@@ -78,7 +83,7 @@ namespace Skyline.DataMiner.Utils.TableCleanup
         /// Add a condition that has to be applied on the rows.
         /// </summary>
         /// <param name="filter">The filter that will be applied.</param>
-        /// <returns>The tablecleaner object.</returns>
+        /// <returns>The TableCleaner object.</returns>
         public TableCleaner WithCondition(ICondition filter)
         {
             Filters.Add(filter);
@@ -88,19 +93,19 @@ namespace Skyline.DataMiner.Utils.TableCleanup
         /// <summary>
         /// The cleanup method will execute all the conditions that where added.
         /// </summary>
-        /// <returns>The tablecleaner object.</returns>
+        /// <returns>The TableCleaner object.</returns>
         public TableCleaner Cleanup()
         {
-            List<string> keysToDelete = new List<string>();
+            var keysToDelete = new List<string>();
             foreach (var filter in Filters)
             {
-                filter.Execute(_Protocol, Rows);
+                filter.Execute(protocol, Rows);
                 keysToDelete.AddRange(filter.RemovedPrimaryKeys);
             }
 
             if (keysToDelete.Count > 0)
             {
-                _Protocol.DeleteRow(TablePid, keysToDelete.ToArray());
+                protocol.DeleteRow(TablePid, keysToDelete.ToArray());
             }
 
             return this;
