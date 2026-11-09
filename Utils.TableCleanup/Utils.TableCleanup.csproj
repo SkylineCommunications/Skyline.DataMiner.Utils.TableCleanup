@@ -1,37 +1,42 @@
 <Project Sdk="Microsoft.NET.Sdk">
-	<PropertyGroup>
-		<TargetFramework>net462</TargetFramework>
-		<ImplicitUsings>disable</ImplicitUsings>
-		<Nullable>disable</Nullable>
-		<AssemblyName>Skyline.DataMiner.Utils.TableCleanup</AssemblyName>
-		<RootNamespace>Skyline.DataMiner.Utils.TableCleanup</RootNamespace>
-		<PackageVersion>1.0.1</PackageVersion>
-		<Version>1.0.1</Version>
-		<PackageTags>Skyline;DataMiner</PackageTags>
-		<PackageProjectUrl>https://skyline.be</PackageProjectUrl>
-		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-		<PackageIcon>Icon.png</PackageIcon>
-		<GenerateDocumentationFile>True</GenerateDocumentationFile>
-		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<Authors>SkylineCommunications</Authors>
-		<Company>Skyline Communications</Company>
-		<Description>The class library helps to manage cleanup of tables based on the age or count of rows in the table.</Description>
-		<RepositoryUrl>
-			https://github.com/SkylineCommunications/Skyline.DataMiner.Utils.TableCleanup.git
-		</RepositoryUrl>
-		<RepositoryType>git</RepositoryType>
-		<Copyright>Copyright ©  $([System.DateTime]::Now.ToString('yyyy'))</Copyright>
-	</PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <AssemblyName>Skyline.DataMiner.Utils.TableCleanup</AssemblyName>
+    <RootNamespace>Skyline.DataMiner.Utils.TableCleanup</RootNamespace>
+    <PackageVersion>1.0.1</PackageVersion>
+    <Version>1.0.1</Version>
+    <PackageTags>Skyline;DataMiner</PackageTags>
+    <PackageProjectUrl>https://skyline.be</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <PackageIcon>Icon.png</PackageIcon>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Authors>SkylineCommunications</Authors>
+    <Company>Skyline Communications</Company>
+    <Description>The class library helps to manage cleanup of tables based on the age or count of rows in the table.</Description>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/SkylineCommunications/Skyline.DataMiner.Utils.TableCleanup</RepositoryUrl>
+  </PropertyGroup>
 
-	<ItemGroup>
-		<None Include="README.md" Pack="true" PackagePath="" />
-		<None Include="LICENSE.txt" Pack="true" PackagePath="" />
-		<None Include="nuget\Icon.png" Pack="true" PackagePath="" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <PackageReference Include="Skyline.DataMiner.Dev.Protocol" Version="10.2.0.6" />
-	</ItemGroup>
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="" />
+    <None Include="LICENSE.txt" Pack="true" PackagePath="" />
+    <None Include="nuget\Icon.png" Pack="true" PackagePath="" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Skyline.DataMiner.CICD.CSharpAnalysis.Analyzer" Version="2.2.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Skyline.DataMiner.Dev.Protocol" Version="10.4.0" />
+    <PackageReference Include="Skyline.DataMiner.Utils.SecureCoding.Analyzers" Version="3.0.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
 </Project>
